@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ResumeSnap — Free Professional CV & Resume Builder</title>
+<meta name="description" content="Create a professional CV or resume in minutes. Free templates, instant PDF download, ATS-friendly. No signup required.">
+<meta name="keywords" content="resume builder, CV builder, free resume template, ATS resume, professional CV 2025, resume maker online">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0c0e;
+  --surface: #141416;
+  --card: #1a1a1e;
+  --card2: #202025;
+  --border: #2a2a32;
+  --border2: #36363f;
+  --gold: #f5c842;
+  --gold-light: #ffd966;
+  --gold-dim: #3d3100;
+  --gold-glow: rgba(245,200,66,0.15);
+  --cream: #faf6ee;
+  --text: #f0ede8;
+  --text-muted: #7a7670;
+  --text-dim: #2e2e34;
+  --green: #4ade80;
+  --red: #f87171;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; font-weight:300; min-height:100vh; overflow-x:hidden; }
+
+/* Background */
+.bg-noise { position:fixed; inset:0; opacity:0.03; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-size:200px; pointer-events:none; z-index:0; }
+.bg-glow { position:fixed; top:0; left:50%; transform:translateX(-50%); width:800px; height:300px; background:radial-gradient(ellipse,rgba(245,200,66,0.07) 0%,transparent 65%); pointer-events:none; z-index:0; }
+
+/* Header */
+header { position:relative; z-index:10; padding:0 48px; height:68px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid var(--border); background:rgba(12,12,14,0.94); backdrop-filter:blur(20px); }
+.logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+.logo-mark { width:32px; height:32px; background:var(--gold); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1rem; }
+.logo-text { font-family:'DM Serif Display',serif; font-size:1.3rem; color:var(--text); letter-spacing:-0.01em; }
+.logo-text em { color:var(--gold); font-style:normal; }
+nav { display:flex; align-items:center; gap:4px; }
+.nav-link { color:var(--text-muted); text-decoration:none; font-size:0.82rem; padding:6px 14px; border-radius:8px; transition:all 0.2s; }
+.nav-link:hover { color:var(--text); background:var(--card); }
+.nav-cta { background:var(--gold); color:var(--bg); font-weight:600; font-size:0.82rem; padding:8px 18px; border-radius:8px; text-decoration:none; margin-left:8px; transition:all 0.2s; }
+.nav-cta:hover { background:var(--gold-light); }
+
+/* Hero */
+.hero { position:relative; z-index:1; padding:80px 48px 64px; max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1.1fr 0.9fr; gap:80px; align-items:start; }
+.hero-eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:0.72rem; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:20px; }
+.hero-eyebrow::before { content:''; width:24px; height:1px; background:var(--gold); }
+.hero h1 { font-family:'DM Serif Display',serif; font-size:clamp(2.8rem,5vw,4.2rem); line-height:1.1; letter-spacing:-0.02em; margin-bottom:20px; }
+.hero h1 em { color:var(--gold); font-style:italic; }
+.hero-sub { color:var(--text-muted); font-size:1rem; line-height:1.75; max-width:460px; margin-bottom:36px; }
+.hero-actions { display:flex; gap:12px; align-items:center; margin-bottom:48px; }
+.btn-primary { background:var(--gold); color:var(--bg); font-weight:600; font-size:0.9rem; padding:13px 28px; border-radius:10px; text-decoration:none; border:none; cursor:pointer; font-family:'DM Sans',sans-serif; transition:all 0.2s; display:inline-flex; align-items:center; gap:8px; }
+.btn-primary:hover { background:var(--gold-light); transform:translateY(-1px); box-shadow:0 8px 24px rgba(245,200,66,0.25); }
+.btn-secondary { background:transparent; color:var(--text-muted); font-size:0.88rem; padding:13px 24px; border-radius:10px; border:1px solid var(--border2); cursor:pointer; font-family:'DM Sans',sans-serif; transition:all 0.2s; }
+.btn-secondary:hover { color:var(--text); border-color:var(--gold-dim); }
+.hero-trust { display:flex; gap:24px; }
+.trust-item { display:flex; align-items:center; gap:8px; font-size:0.8rem; color:var(--text-muted); }
+.trust-item span { color:var(--green); }
+
+/* Live Preview */
+.preview-wrapper { position:sticky; top:24px; }
+.preview-label { font-size:0.7rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+.preview-label::before { content:''; width:6px; height:6px; background:var(--green); border-radius:50%; box-shadow:0 0 8px var(--green); animation:pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.cv-preview { background:white; border-radius:12px; overflow:hidden; box-shadow:0 32px 80px rgba(0,0,0,0.6); position:relative; transform:perspective(1200px) rotateY(-4deg) rotateX(2deg); transition:transform 0.4s ease; }
+.cv-preview:hover { transform:perspective(1200px) rotateY(0deg) rotateX(0deg); }
+.cv-preview-inner { padding:28px 24px; font-family:'DM Sans',sans-serif; color:#111; }
+.cv-header { border-bottom:2px solid #f5c842; padding-bottom:16px; margin-bottom:16px; }
+.cv-name { font-family:'DM Serif Display',serif; font-size:1.6rem; color:#0c0c0e; letter-spacing:-0.02em; }
+.cv-role { font-size:0.82rem; color:#666; margin-top:2px; }
+.cv-contact { display:flex; gap:12px; margin-top:8px; font-size:0.7rem; color:#888; }
+.cv-section-title { font-size:0.65rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:#f5c842; margin-bottom:8px; margin-top:14px; }
+.cv-item { margin-bottom:10px; }
+.cv-item-header { display:flex; justify-content:space-between; }
+.cv-item-title { font-size:0.78rem; font-weight:600; color:#111; }
+.cv-item-date { font-size:0.68rem; color:#999; }
+.cv-item-sub { font-size:0.72rem; color:#555; margin-top:1px; }
+.cv-item-bullets { margin-top:4px; padding-left:12px; }
+.cv-item-bullets li { font-size:0.7rem; color:#666; line-height:1.5; list-style:disc; }
+.cv-skill-grid { display:flex; flex-wrap:wrap; gap:4px; margin-top:4px; }
+.cv-skill { background:#f5f5f5; padding:2px 8px; border-radius:3px; font-size:0.65rem; color:#444; }
+
+/* Template Selector */
+.template-section { position:relative; z-index:1; max-width:1280px; margin:0 auto; padding:0 48px 80px; }
+.section-eyebrow { font-size:0.72rem; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+.section-eyebrow::before { content:''; width:24px; height:1px; background:var(--gold); }
+.section-title { font-family:'DM Serif Display',serif; font-size:2rem; letter-spacing:-0.02em; margin-bottom:8px; }
+.section-sub { color:var(--text-muted); font-size:0.9rem; margin-bottom:36px; }
+.templates-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.template-card { background:var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; cursor:pointer; transition:all 0.25s; position:relative; }
+.template-card:hover { border-color:var(--gold-dim); transform:translateY(-3px); box-shadow:0 16px 48px rgba(245,200,66,0.08); }
+.template-card.selected { border-color:var(--gold); box-shadow:0 0 0 1px var(--gold-dim); }
+.template-badge { position:absolute; top:12px; right:12px; background:var(--gold); color:var(--bg); font-size:0.65rem; font-weight:600; padding:3px 10px; border-radius:100px; }
+.template-preview { background:white; padding:20px 16px; height:180px; overflow:hidden; position:relative; }
+.template-preview::after { content:''; position:absolute; bottom:0; left:0; right:0; height:60px; background:linear-gradient(transparent,white); }
+.template-info { padding:16px; }
+.template-name { font-weight:600; font-size:0.9rem; margin-bottom:4px; }
+.template-desc { font-size:0.78rem; color:var(--text-muted); line-height:1.5; }
+
+/* Builder Section */
+.builder-section { position:relative; z-index:1; max-width:1280px; margin:0 auto; padding:0 48px 80px; }
+.builder-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:start; }
+.builder-form { background:var(--card); border:1px solid var(--border); border-radius:16px; overflow:hidden; }
+.form-tabs { display:flex; border-bottom:1px solid var(--border); }
+.form-tab { flex:1; padding:14px; font-size:0.8rem; font-weight:500; color:var(--text-muted); background:none; border:none; cursor:pointer; transition:all 0.2s; font-family:'DM Sans',sans-serif; border-bottom:2px solid transparent; margin-bottom:-1px; }
+.form-tab.active { color:var(--gold); border-bottom-color:var(--gold); background:rgba(245,200,66,0.04); }
+.form-tab:hover { color:var(--text); }
+.form-panel { padding:24px; display:none; }
+.form-panel.active { display:block; }
+.form-field { display:flex; flex-direction:column; gap:6px; margin-bottom:16px; }
+.form-field-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.form-label { font-size:0.72rem; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-muted); }
+.form-input { background:var(--surface); border:1px solid var(--border); color:var(--text); padding:10px 14px; border-radius:8px; font-family:'DM Sans',sans-serif; font-size:0.9rem; outline:none; transition:all 0.2s; width:100%; }
+.form-input:focus { border-color:var(--gold-dim); background:rgba(245,200,66,0.03); }
+textarea.form-input { resize:vertical; min-height:80px; line-height:1.6; }
+.add-btn { width:100%; background:transparent; border:1px dashed var(--border2); color:var(--text-muted); padding:10px; border-radius:8px; font-family:'DM Sans',sans-serif; font-size:0.82rem; cursor:pointer; transition:all 0.2s; margin-top:8px; }
+.add-btn:hover { border-color:var(--gold-dim); color:var(--gold); }
+.download-btn { width:100%; background:var(--gold); color:var(--bg); border:none; padding:14px; font-family:'DM Sans',sans-serif; font-size:0.95rem; font-weight:600; cursor:pointer; border-radius:10px; margin-top:20px; transition:all 0.2s; display:flex; align-items:center; justify-content:center; gap:8px; }
+.download-btn:hover { background:var(--gold-light); transform:translateY(-1px); box-shadow:0 8px 24px rgba(245,200,66,0.3); }
+
+/* Live CV output */
+.cv-live { background:white; border-radius:12px; box-shadow:0 24px 60px rgba(0,0,0,0.5); overflow:hidden; min-height:400px; }
+.cv-live-inner { padding:32px 28px; font-family:'DM Sans',sans-serif; color:#111; }
+
+/* Features */
+.features-section { position:relative; z-index:1; max-width:1280px; margin:0 auto; padding:0 48px 80px; }
+.features-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.feature-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:24px; transition:border-color 0.2s; }
+.feature-card:hover { border-color:var(--border2); }
+.feature-icon { font-size:1.6rem; margin-bottom:14px; }
+.feature-title { font-weight:600; font-size:0.9rem; margin-bottom:8px; }
+.feature-desc { font-size:0.8rem; color:var(--text-muted); line-height:1.7; }
+
+footer { position:relative; z-index:1; border-top:1px solid var(--border); padding:28px 48px; display:flex; justify-content:space-between; align-items:center; }
+footer p { font-size:0.75rem; color:var(--text-dim); }
+footer a { color:var(--text-muted); text-decoration:none; font-size:0.75rem; }
+footer a:hover { color:var(--gold); }
+
+/* Animations */
+.hero-left { animation:fadeUp 0.6s ease forwards; }
+.preview-wrapper { animation:fadeUp 0.6s ease 0.15s both; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+
+@media(max-width:1024px) {
+  .hero { grid-template-columns:1fr; gap:40px; padding:48px 24px 32px; }
+  .preview-wrapper { position:static; }
+  .builder-grid { grid-template-columns:1fr; }
+  .templates-grid { grid-template-columns:1fr 1fr; }
+  .features-grid { grid-template-columns:1fr 1fr; }
+  header,footer,.template-section,.builder-section,.features-section { padding-left:24px; padding-right:24px; }
+}
+@media(max-width:640px) {
+  .templates-grid { grid-template-columns:1fr; }
+  .features-grid { grid-template-columns:1fr; }
+  nav { display:none; }
+}
+</style>
+</head>
+<body>
+<div class="bg-noise"></div>
+<div class="bg-glow"></div>
+
+<header>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">📄</div>
+    <span class="logo-text">Resume<em>Snap</em></span>
+  </a>
+  <nav>
+    <a href="#templates" class="nav-link">Templates</a>
+    <a href="#builder" class="nav-link">Builder</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="#builder" class="nav-cta">Build My CV →</a>
+  </nav>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Free · Professional · ATS-Optimised</div>
+    <h1>Your Next Job Starts With a <em>Great CV.</em></h1>
+    <p class="hero-sub">Build a professional, recruiter-approved resume in minutes. Choose from beautiful templates, fill in your details, and download as PDF — completely free.</p>
+    <div class="hero-actions">
+      <a href="#builder" class="btn-primary">Build My CV Free →</a>
+      <a href="#templates" class="btn-secondary">View Templates</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item"><span>✓</span> No signup required</div>
+      <div class="trust-item"><span>✓</span> Instant PDF download</div>
+      <div class="trust-item"><span>✓</span> ATS-friendly formats</div>
+    </div>
+  </div>
+
+  <!-- Live preview -->
+  <div class="preview-wrapper">
+    <div class="preview-label">Live preview</div>
+    <div class="cv-preview">
+      <div class="cv-preview-inner">
+        <div class="cv-header">
+          <div class="cv-name">Alexandra Chen</div>
+          <div class="cv-role">Senior Product Designer · UX Lead</div>
+          <div class="cv-contact">
+            <span>alex@email.com</span>
+            <span>+44 7700 900000</span>
+            <span>London, UK</span>
+            <span>linkedin.com/in/alexchen</span>
+          </div>
+        </div>
+        <div class="cv-section-title">Experience</div>
+        <div class="cv-item">
+          <div class="cv-item-header">
+            <div class="cv-item-title">Senior Product Designer</div>
+            <div class="cv-item-date">2021 – Present</div>
+          </div>
+          <div class="cv-item-sub">Spotify · London, UK</div>
+          <ul class="cv-item-bullets">
+            <li>Led design for 3 major product launches reaching 12M users</li>
+            <li>Reduced user drop-off by 34% through UX research</li>
+          </ul>
+        </div>
+        <div class="cv-item">
+          <div class="cv-item-header">
+            <div class="cv-item-title">UI/UX Designer</div>
+            <div class="cv-item-date">2018 – 2021</div>
+          </div>
+          <div class="cv-item-sub">Monzo Bank · London, UK</div>
+        </div>
+        <div class="cv-section-title">Education</div>
+        <div class="cv-item">
+          <div class="cv-item-header">
+            <div class="cv-item-title">BA Graphic Design</div>
+            <div class="cv-item-date">2014–2018</div>
+          </div>
+          <div class="cv-item-sub">Central Saint Martins · London</div>
+        </div>
+        <div class="cv-section-title">Skills</div>
+        <div class="cv-skill-grid">
+          <span class="cv-skill">Figma</span><span class="cv-skill">Sketch</span>
+          <span class="cv-skill">Prototyping</span><span class="cv-skill">User Research</span>
+          <span class="cv-skill">Design Systems</span><span class="cv-skill">A/B Testing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Templates -->
+<div class="template-section" id="templates">
+  <div class="section-eyebrow">Professional Templates</div>
+  <div class="section-title">Choose Your Style</div>
+  <p class="section-sub">All templates are ATS-friendly, recruiter-tested, and instantly downloadable.</p>
+  <div class="templates-grid">
+    <div class="template-card selected" onclick="selectTemplate('classic')">
+      <div class="template-badge">Most Popular</div>
+      <div class="template-preview">
+        <div style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:#111;border-bottom:2px solid #f5c842;padding-bottom:8px;margin-bottom:10px">Classic Gold</div>
+        <div style="font-size:0.6rem;color:#333;font-family:'DM Sans',sans-serif">EXPERIENCE</div>
+        <div style="height:4px;background:#f5c842;width:100%;margin:4px 0 8px"></div>
+        <div style="font-size:0.65rem;color:#111;font-weight:600;font-family:'DM Sans',sans-serif">Senior Designer · Company</div>
+        <div style="font-size:0.58rem;color:#777;font-family:'DM Sans',sans-serif;margin-top:2px">2020–Present · New York</div>
+        <div style="font-size:0.6rem;color:#333;font-family:'DM Sans',sans-serif;margin-top:8px">EDUCATION</div>
+        <div style="height:4px;background:#f5c842;width:100%;margin:4px 0 8px"></div>
+        <div style="font-size:0.65rem;color:#111;font-weight:600;font-family:'DM Sans',sans-serif">BA Design · University</div>
+      </div>
+      <div class="template-info">
+        <div class="template-name">Classic Gold</div>
+        <div class="template-desc">Timeless, elegant — works for any industry</div>
+      </div>
+    </div>
+
+    <div class="template-card" onclick="selectTemplate('modern')">
+      <div class="template-preview" style="background:#0c0c0e">
+        <div style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:white;margin-bottom:6px">Modern Dark</div>
+        <div style="font-size:0.58rem;color:#f5c842;letter-spacing:0.1em;text-transform:uppercase;font-family:'DM Sans',sans-serif">Experience</div>
+        <div style="height:1px;background:#333;margin:4px 0 8px"></div>
+        <div style="font-size:0.65rem;color:#eee;font-weight:600;font-family:'DM Sans',sans-serif">Senior Developer · Tech Co</div>
+        <div style="font-size:0.58rem;color:#666;font-family:'DM Sans',sans-serif;margin-top:2px">2021–Present</div>
+        <div style="display:flex;gap:4px;margin-top:8px;flex-wrap:wrap">
+          <span style="background:#1a1a1e;border:1px solid #333;padding:2px 6px;font-size:0.55rem;color:#f5c842;border-radius:3px;font-family:'DM Sans',sans-serif">React</span>
+          <span style="background:#1a1a1e;border:1px solid #333;padding:2px 6px;font-size:0.55rem;color:#f5c842;border-radius:3px;font-family:'DM Sans',sans-serif">TypeScript</span>
+        </div>
+      </div>
+      <div class="template-info">
+        <div class="template-name">Modern Dark</div>
+        <div class="template-desc">Bold & contemporary — perfect for tech roles</div>
+      </div>
+    </div>
+
+    <div class="template-card" onclick="selectTemplate('minimal')">
+      <div class="template-badge" style="background:#4ade80;color:#0c0c0e">ATS Best</div>
+      <div class="template-preview">
+        <div style="font-family:'DM Serif Display',serif;font-size:1.2rem;color:#111;margin-bottom:4px">Clean Minimal</div>
+        <div style="font-size:0.6rem;color:#888;font-family:'DM Sans',sans-serif;margin-bottom:12px">designer@email.com · London</div>
+        <div style="font-size:0.62rem;color:#111;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;font-family:'DM Sans',sans-serif;margin-bottom:6px">Work Experience</div>
+        <div style="height:1px;background:#eee;margin-bottom:8px"></div>
+        <div style="font-size:0.65rem;color:#111;font-weight:600;font-family:'DM Sans',sans-serif">Product Manager</div>
+        <div style="font-size:0.6rem;color:#555;font-family:'DM Sans',sans-serif">Google · 2020–Present</div>
+      </div>
+      <div class="template-info">
+        <div class="template-name">Clean Minimal</div>
+        <div class="template-desc">Ultra-clean — highest ATS compatibility</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Builder -->
+<div class="builder-section" id="builder">
+  <div class="section-eyebrow">Live CV Builder</div>
+  <div class="section-title">Fill In. Preview. Download.</div>
+  <p class="section-sub" style="margin-bottom:28px">Your CV updates in real time as you type.</p>
+
+  <div class="builder-grid">
+    <!-- Form -->
+    <div class="builder-form">
+      <div class="form-tabs">
+        <button class="form-tab active" onclick="switchTab('personal',this)">Personal</button>
+        <button class="form-tab" onclick="switchTab('experience',this)">Experience</button>
+        <button class="form-tab" onclick="switchTab('education',this)">Education</button>
+        <button class="form-tab" onclick="switchTab('skills',this)">Skills</button>
+      </div>
+
+      <!-- Personal -->
+      <div class="form-panel active" id="tab-personal">
+        <div class="form-field-row">
+          <div class="form-field"><label class="form-label">First Name</label><input class="form-input" id="fn" placeholder="Alexandra" oninput="updateCV()"></div>
+          <div class="form-field"><label class="form-label">Last Name</label><input class="form-input" id="ln" placeholder="Chen" oninput="updateCV()"></div>
+        </div>
+        <div class="form-field"><label class="form-label">Job Title</label><input class="form-input" id="title" placeholder="Senior Product Designer" oninput="updateCV()"></div>
+        <div class="form-field"><label class="form-label">Email</label><input class="form-input" id="email" placeholder="alex@email.com" oninput="updateCV()"></div>
+        <div class="form-field-row">
+          <div class="form-field"><label class="form-label">Phone</label><input class="form-input" id="phone" placeholder="+44 7700 900000" oninput="updateCV()"></div>
+          <div class="form-field"><label class="form-label">Location</label><input class="form-input" id="location" placeholder="London, UK" oninput="updateCV()"></div>
+        </div>
+        <div class="form-field"><label class="form-label">LinkedIn / Website</label><input class="form-input" id="linkedin" placeholder="linkedin.com/in/yourname" oninput="updateCV()"></div>
+        <div class="form-field"><label class="form-label">Professional Summary</label><textarea class="form-input" id="summary" placeholder="Brief professional summary..." oninput="updateCV()"></textarea></div>
+      </div>
+
+      <!-- Experience -->
+      <div class="form-panel" id="tab-experience">
+        <div id="exp-list">
+          <div class="exp-item" style="border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:12px">
+            <div class="form-field"><label class="form-label">Job Title</label><input class="form-input exp-jobtitle" placeholder="Senior Designer" oninput="updateCV()"></div>
+            <div class="form-field"><label class="form-label">Company</label><input class="form-input exp-company" placeholder="Spotify" oninput="updateCV()"></div>
+            <div class="form-field-row">
+              <div class="form-field"><label class="form-label">Start Date</label><input class="form-input exp-start" placeholder="2021" oninput="updateCV()"></div>
+              <div class="form-field"><label class="form-label">End Date</label><input class="form-input exp-end" placeholder="Present" oninput="updateCV()"></div>
+            </div>
+            <div class="form-field"><label class="form-label">Description</label><textarea class="form-input exp-desc" placeholder="Key achievements and responsibilities..." oninput="updateCV()"></textarea></div>
+          </div>
+        </div>
+        <button class="add-btn" onclick="addExp()">+ Add Another Position</button>
+      </div>
+
+      <!-- Education -->
+      <div class="form-panel" id="tab-education">
+        <div id="edu-list">
+          <div class="edu-item" style="border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:12px">
+            <div class="form-field"><label class="form-label">Degree / Qualification</label><input class="form-input edu-degree" placeholder="BA Graphic Design" oninput="updateCV()"></div>
+            <div class="form-field"><label class="form-label">Institution</label><input class="form-input edu-school" placeholder="Central Saint Martins" oninput="updateCV()"></div>
+            <div class="form-field-row">
+              <div class="form-field"><label class="form-label">Start Year</label><input class="form-input edu-start" placeholder="2014" oninput="updateCV()"></div>
+              <div class="form-field"><label class="form-label">End Year</label><input class="form-input edu-end" placeholder="2018" oninput="updateCV()"></div>
+            </div>
+          </div>
+        </div>
+        <button class="add-btn" onclick="addEdu()">+ Add Another Qualification</button>
+      </div>
+
+      <!-- Skills -->
+      <div class="form-panel" id="tab-skills">
+        <div class="form-field"><label class="form-label">Skills (comma separated)</label><textarea class="form-input" id="skills" placeholder="Figma, Sketch, User Research, Prototyping, Design Systems, A/B Testing" rows="3" oninput="updateCV()"></textarea></div>
+        <div class="form-field"><label class="form-label">Languages</label><input class="form-input" id="languages" placeholder="English (Native), Spanish (Intermediate)" oninput="updateCV()"></div>
+        <div class="form-field"><label class="form-label">Certifications (optional)</label><textarea class="form-input" id="certs" placeholder="Google UX Design Certificate, 2023&#10;AWS Certified Developer, 2022" rows="3" oninput="updateCV()"></textarea></div>
+      </div>
+
+      <div style="padding:0 24px 24px">
+        <button class="download-btn" onclick="downloadCV()">⬇ Download as PDF — Free</button>
+      </div>
+    </div>
+
+    <!-- Live CV -->
+    <div>
+      <div class="preview-label" style="color:var(--text-muted)">Live Preview</div>
+      <div class="cv-live" id="cv-output">
+        <div class="cv-live-inner" id="cv-content">
+          <div style="text-align:center;padding:60px 20px;color:#aaa;font-family:'DM Sans',sans-serif">
+            <div style="font-size:2rem;margin-bottom:12px">📝</div>
+            <div style="font-size:0.9rem">Start filling in your details<br>to see your CV come to life</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Features -->
+<div class="features-section">
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🤖</div>
+      <div class="feature-title">ATS-Optimised</div>
+      <div class="feature-desc">All templates pass Applicant Tracking Systems used by top employers like Google, Amazon, and KPMG.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <div class="feature-title">Instant Preview</div>
+      <div class="feature-desc">See exactly how your CV looks as you type. No guessing, no surprises — what you see is what you get.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📥</div>
+      <div class="feature-title">Free PDF Download</div>
+      <div class="feature-desc">Download your finished CV as a professional PDF, ready to send to any employer or upload to job boards.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <div class="feature-title">100% Private</div>
+      <div class="feature-desc">Your CV data stays in your browser. We never store, share, or have access to your personal information.</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 ResumeSnap.net — Free CV & resume builder. Your data stays private.</p>
+  <div style="display:flex;gap:20px">
+    <a href="privacy.html">Privacy</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+let selectedTemplate = 'classic';
+
+function selectTemplate(t) {
+  selectedTemplate = t;
+  document.querySelectorAll('.template-card').forEach(c => c.classList.remove('selected'));
+  event.currentTarget.classList.add('selected');
+  updateCV();
+}
+
+function switchTab(tab, btn) {
+  document.querySelectorAll('.form-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + tab).classList.add('active');
+}
+
+function addExp() {
+  const div = document.createElement('div');
+  div.className = 'exp-item';
+  div.style.cssText = 'border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:12px';
+  div.innerHTML = `
+    <div class="form-field"><label class="form-label">Job Title</label><input class="form-input exp-jobtitle" placeholder="Job Title" oninput="updateCV()"></div>
+    <div class="form-field"><label class="form-label">Company</label><input class="form-input exp-company" placeholder="Company Name" oninput="updateCV()"></div>
+    <div class="form-field-row">
+      <div class="form-field"><label class="form-label">Start</label><input class="form-input exp-start" placeholder="2020" oninput="updateCV()"></div>
+      <div class="form-field"><label class="form-label">End</label><input class="form-input exp-end" placeholder="Present" oninput="updateCV()"></div>
+    </div>
+    <div class="form-field"><label class="form-label">Description</label><textarea class="form-input exp-desc" placeholder="Key achievements..." oninput="updateCV()"></textarea></div>
+  `;
+  document.getElementById('exp-list').appendChild(div);
+}
+
+function addEdu() {
+  const div = document.createElement('div');
+  div.className = 'edu-item';
+  div.style.cssText = 'border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:12px';
+  div.innerHTML = `
+    <div class="form-field"><label class="form-label">Degree</label><input class="form-input edu-degree" placeholder="BSc Computer Science" oninput="updateCV()"></div>
+    <div class="form-field"><label class="form-label">Institution</label><input class="form-input edu-school" placeholder="University Name" oninput="updateCV()"></div>
+    <div class="form-field-row">
+      <div class="form-field"><label class="form-label">Start</label><input class="form-input edu-start" placeholder="2016" oninput="updateCV()"></div>
+      <div class="form-field"><label class="form-label">End</label><input class="form-input edu-end" placeholder="2020" oninput="updateCV()"></div>
+    </div>
+  `;
+  document.getElementById('edu-list').appendChild(div);
+}
+
+function getColors() {
+  const t = selectedTemplate;
+  if (t === 'classic') return { accent:'#f5c842', bg:'white', text:'#111', muted:'#666', border:'2px solid #f5c842' };
+  if (t === 'modern')  return { accent:'#f5c842', bg:'#0c0c0e', text:'#eee', muted:'#888', border:'1px solid #222' };
+  return { accent:'#333', bg:'white', text:'#111', muted:'#555', border:'1px solid #eee' };
+}
+
+function updateCV() {
+  const fn = document.getElementById('fn').value || 'Your Name';
+  const ln = document.getElementById('ln').value || '';
+  const title = document.getElementById('title').value || 'Your Job Title';
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  const loc   = document.getElementById('location').value;
+  const li    = document.getElementById('linkedin').value;
+  const summary = document.getElementById('summary').value;
+  const skillsRaw = document.getElementById('skills').value;
+  const langs  = document.getElementById('languages').value;
+  const certs  = document.getElementById('certs').value;
+
+  const c = getColors();
+  const isDark = selectedTemplate === 'modern';
+
+  let html = `<div style="background:${c.bg};padding:32px 28px;font-family:'DM Sans',sans-serif;color:${c.text}">`;
+
+  // Header
+  html += `<div style="border-bottom:${c.border};padding-bottom:16px;margin-bottom:20px">`;
+  html += `<div style="font-family:'DM Serif Display',serif;font-size:1.8rem;color:${c.text};letter-spacing:-0.02em">${fn} ${ln}</div>`;
+  html += `<div style="font-size:0.85rem;color:${c.muted};margin-top:4px">${title}</div>`;
+  const contacts = [email,phone,loc,li].filter(Boolean);
+  if (contacts.length) html += `<div style="display:flex;gap:14px;margin-top:8px;flex-wrap:wrap">${contacts.map(x=>`<span style="font-size:0.75rem;color:${c.muted}">${x}</span>`).join('')}</div>`;
+  html += `</div>`;
+
+  // Summary
+  if (summary) {
+    html += sectionTitle('Profile', c, isDark);
+    html += `<p style="font-size:0.82rem;color:${c.muted};line-height:1.7;margin-bottom:16px">${summary}</p>`;
+  }
+
+  // Experience
+  const expItems = document.querySelectorAll('.exp-item');
+  const expData = [];
+  expItems.forEach(item => {
+    const jt = item.querySelector('.exp-jobtitle')?.value;
+    const co = item.querySelector('.exp-company')?.value;
+    const st = item.querySelector('.exp-start')?.value;
+    const en = item.querySelector('.exp-end')?.value;
+    const de = item.querySelector('.exp-desc')?.value;
+    if (jt || co) expData.push({jt,co,st,en,de});
+  });
+  if (expData.length) {
+    html += sectionTitle('Experience', c, isDark);
+    expData.forEach(e => {
+      html += `<div style="margin-bottom:14px">`;
+      html += `<div style="display:flex;justify-content:space-between;align-items:baseline">`;
+      html += `<div style="font-size:0.85rem;font-weight:600;color:${c.text}">${e.jt||''}</div>`;
+      if (e.st||e.en) html += `<div style="font-size:0.72rem;color:${c.muted}">${e.st||''}${e.en?' – '+e.en:''}</div>`;
+      html += `</div>`;
+      if (e.co) html += `<div style="font-size:0.78rem;color:${c.muted};margin-top:2px">${e.co}</div>`;
+      if (e.de) {
+        const bullets = e.de.split('\n').filter(Boolean);
+        html += `<ul style="padding-left:16px;margin-top:6px">`;
+        bullets.forEach(b => html += `<li style="font-size:0.78rem;color:${c.muted};line-height:1.6;list-style:disc">${b}</li>`);
+        html += `</ul>`;
+      }
+      html += `</div>`;
+    });
+  }
+
+  // Education
+  const eduItems = document.querySelectorAll('.edu-item');
+  const eduData = [];
+  eduItems.forEach(item => {
+    const deg = item.querySelector('.edu-degree')?.value;
+    const sch = item.querySelector('.edu-school')?.value;
+    const st  = item.querySelector('.edu-start')?.value;
+    const en  = item.querySelector('.edu-end')?.value;
+    if (deg||sch) eduData.push({deg,sch,st,en});
+  });
+  if (eduData.length) {
+    html += sectionTitle('Education', c, isDark);
+    eduData.forEach(e => {
+      html += `<div style="margin-bottom:12px">`;
+      html += `<div style="display:flex;justify-content:space-between">`;
+      html += `<div style="font-size:0.85rem;font-weight:600;color:${c.text}">${e.deg||''}</div>`;
+      if (e.st||e.en) html += `<div style="font-size:0.72rem;color:${c.muted}">${e.st||''}${e.en?' – '+e.en:''}</div>`;
+      html += `</div>`;
+      if (e.sch) html += `<div style="font-size:0.78rem;color:${c.muted}">${e.sch}</div>`;
+      html += `</div>`;
+    });
+  }
+
+  // Skills
+  if (skillsRaw) {
+    html += sectionTitle('Skills', c, isDark);
+    const skills = skillsRaw.split(',').map(s=>s.trim()).filter(Boolean);
+    html += `<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px">`;
+    skills.forEach(s => html += `<span style="background:${isDark?'#1a1a1e':'#f5f5f5'};border:1px solid ${isDark?'#333':'#e0e0e0'};padding:3px 10px;border-radius:4px;font-size:0.75rem;color:${isDark?c.accent:c.text}">${s}</span>`);
+    html += `</div>`;
+  }
+
+  // Languages
+  if (langs) {
+    html += sectionTitle('Languages', c, isDark);
+    html += `<p style="font-size:0.82rem;color:${c.muted};margin-bottom:16px">${langs}</p>`;
+  }
+
+  // Certs
+  if (certs) {
+    html += sectionTitle('Certifications', c, isDark);
+    certs.split('\n').filter(Boolean).forEach(cert => {
+      html += `<div style="font-size:0.82rem;color:${c.muted};margin-bottom:4px">✓ ${cert}</div>`;
+    });
+  }
+
+  html += `</div>`;
+  document.getElementById('cv-content').innerHTML = html;
+  document.getElementById('cv-output').style.background = c.bg;
+}
+
+function sectionTitle(title, c, isDark) {
+  if (isDark) {
+    return `<div style="font-size:0.65rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:${c.accent};margin:16px 0 8px">${title}</div><div style="height:1px;background:#222;margin-bottom:12px"></div>`;
+  }
+  return `<div style="font-size:0.65rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:${c.accent};margin:16px 0 8px">${title}</div><div style="height:2px;background:${c.accent};margin-bottom:12px"></div>`;
+}
+
+function downloadCV() {
+  const fn = document.getElementById('fn').value || 'resume';
+  const ln = document.getElementById('ln').value || '';
+  const cvContent = document.getElementById('cv-content').innerHTML;
+  const printWin = window.open('', '_blank');
+  printWin.document.write(`<!DOCTYPE html><html><head><title>${fn} ${ln} — CV</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+    <style>body{margin:0;padding:0}@media print{@page{margin:0}}</style>
+    </head><body onload="window.print()">${cvContent}</body></html>`);
+  printWin.document.close();
+}
+</script>
+</body>
+</html>

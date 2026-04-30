@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — ResumeSnap.net</title>
+<meta name="description" content="ResumeSnap is a free, professional CV and resume builder with ATS-optimised templates and instant PDF download.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#0c0c0e; --surface:#141416; --card:#1a1a1e; --border:#2a2a32; --gold:#f5c842; --gold-light:#ffd966; --gold-dim:#3d3100; --text:#f0ede8; --text-muted:#7a7670; --text-dim:#2e2e34; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; font-weight:300; }
+  .bg-glow { position:fixed; top:0; left:50%; transform:translateX(-50%); width:800px; height:300px; background:radial-gradient(ellipse,rgba(245,200,66,0.06) 0%,transparent 65%); pointer-events:none; z-index:0; }
+  header { position:relative; z-index:10; padding:0 48px; height:68px; display:flex; align-items:center; border-bottom:1px solid var(--border); background:rgba(12,12,14,0.94); backdrop-filter:blur(20px); }
+  .logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .logo-mark { width:32px; height:32px; background:var(--gold); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:1rem; }
+  .logo-text { font-family:'DM Serif Display',serif; font-size:1.3rem; color:var(--text); }
+  .logo-text em { color:var(--gold); font-style:normal; }
+  .content { position:relative; z-index:1; max-width:760px; margin:0 auto; padding:64px 24px 100px; }
+  h1 { font-family:'DM Serif Display',serif; font-size:2.8rem; letter-spacing:-0.02em; margin-bottom:16px; line-height:1.1; }
+  h1 em { color:var(--gold); font-style:italic; }
+  h2 { font-size:0.72rem; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin:40px 0 14px; }
+  p { color:var(--text-muted); line-height:1.9; font-size:0.95rem; margin-bottom:16px; }
+  strong { color:var(--text); font-weight:600; }
+  .features { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:24px 0; }
+  .feature { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px; }
+  .feature-icon { font-size:1.5rem; margin-bottom:10px; }
+  .feature h4 { font-size:0.9rem; font-weight:600; color:var(--text); margin-bottom:6px; }
+  .feature p { font-size:0.82rem; margin:0; }
+  .disclaimer { background:rgba(245,200,66,0.05); border-left:2px solid var(--gold); border-radius:0 10px 10px 0; padding:18px 22px; margin-top:28px; }
+  .disclaimer p { margin:0; font-size:0.88rem; }
+  footer { position:relative; z-index:1; border-top:1px solid var(--border); padding:28px 48px; display:flex; justify-content:space-between; }
+  footer p, footer a { font-size:0.75rem; color:var(--text-dim); text-decoration:none; }
+  footer a:hover { color:var(--gold); }
+  @media(max-width:768px) { header{padding:0 20px} .features{grid-template-columns:1fr} footer{flex-direction:column;gap:10px;padding:28px 20px} }
+</style>
+</head>
+<body>
+<div class="bg-glow"></div>
+<header>
+  <a href="index.html" class="logo">
+    <div class="logo-mark">📄</div>
+    <span class="logo-text">Resume<em>Snap</em></span>
+  </a>
+</header>
+<div class="content">
+  <h1>Build CVs That Get <em>Interviews.</em></h1>
+  <p>ResumeSnap.net is a free, browser-based CV and resume builder. We built it because a great job opportunity shouldn't be missed because of a poorly formatted CV — and professional resume help shouldn't cost money.</p>
+  <p>Choose a template, fill in your details, and download a polished, recruiter-ready PDF in minutes. Everything runs in your browser — your data never leaves your device.</p>
+
+  <h2>What We Offer</h2>
+  <div class="features">
+    <div class="feature"><div class="feature-icon">🥇</div><h4>Classic Gold Template</h4><p>Timeless and elegant — works for any industry from finance to creative.</p></div>
+    <div class="feature"><div class="feature-icon">🖤</div><h4>Modern Dark Template</h4><p>Bold and contemporary — designed for tech, design, and startup roles.</p></div>
+    <div class="feature"><div class="feature-icon">✅</div><h4>Clean Minimal Template</h4><p>Ultra-clean layout with the highest ATS compatibility scores.</p></div>
+    <div class="feature"><div class="feature-icon">📥</div><h4>Free PDF Download</h4><p>Download your finished CV instantly — no watermarks, no hidden fees.</p></div>
+  </div>
+
+  <h2>What is ATS?</h2>
+  <p>ATS stands for Applicant Tracking System — software used by most large employers to screen CVs before a human ever sees them. Our templates are designed to pass ATS scans by using clean formatting, standard section headings, and readable fonts. This significantly increases your chances of getting your CV in front of a real recruiter.</p>
+
+  <div class="disclaimer">
+    <p><strong style="color:var(--gold)">Note:</strong> ResumeSnap provides templates and tools for informational purposes. Results vary depending on the role, industry, and employer. We recommend tailoring your CV for each application.</p>
+  </div>
+</div>
+<footer>
+  <p>© 2025 ResumeSnap.net — Free CV builder</p>
+  <div style="display:flex;gap:20px"><a href="privacy.html">Privacy</a><a href="contact.html">Contact</a></div>
+</footer>
+</body>
+</html>
