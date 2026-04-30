@@ -38,6 +38,65 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 body { background:var(--bg); color:var(--text); font-family:'DM Sans',sans-serif; font-weight:300; min-height:100vh; overflow-x:hidden; }
 
+/* ATS Score */
+.ats-section { position:relative; z-index:1; max-width:1280px; margin:0 auto; padding:0 48px 60px; }
+.ats-card { background:var(--card); border:1px solid var(--border); border-radius:20px; padding:40px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+.ats-left h2 { font-family:'DM Serif Display',serif; font-size:1.8rem; letter-spacing:-0.02em; margin-bottom:10px; }
+.ats-left h2 em { color:var(--gold); font-style:italic; }
+.ats-left p { color:var(--text-muted); font-size:0.9rem; line-height:1.7; margin-bottom:20px; }
+.ats-features { display:flex; flex-direction:column; gap:10px; margin-bottom:24px; }
+.ats-feature { display:flex; align-items:center; gap:10px; font-size:0.85rem; color:var(--text-muted); }
+.ats-feature-dot { width:6px; height:6px; background:var(--gold); border-radius:50%; flex-shrink:0; }
+.ats-btn { background:var(--gold); color:var(--bg); border:none; padding:13px 28px; border-radius:10px; font-family:'DM Sans',sans-serif; font-size:0.9rem; font-weight:600; cursor:pointer; transition:all 0.2s; display:inline-flex; align-items:center; gap:8px; }
+.ats-btn:hover { background:var(--gold-light); transform:translateY(-1px); }
+.ats-btn:disabled { opacity:0.6; cursor:wait; transform:none; }
+.ats-right { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:28px; min-height:280px; display:flex; flex-direction:column; }
+.ats-placeholder { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:12px; color:var(--text-muted); }
+.ats-placeholder-icon { font-size:2.5rem; opacity:0.4; }
+.ats-placeholder-text { font-size:0.85rem; line-height:1.6; }
+
+/* Score display */
+.score-display { display:flex; flex-direction:column; align-items:center; margin-bottom:20px; }
+.score-circle { position:relative; width:110px; height:110px; margin-bottom:12px; }
+.score-circle svg { transform:rotate(-90deg); }
+.score-circle-track { fill:none; stroke:var(--border); stroke-width:8; }
+.score-circle-fill { fill:none; stroke-width:8; stroke-linecap:round; transition:stroke-dashoffset 1s ease; }
+.score-num { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.score-val { font-family:'DM Serif Display',serif; font-size:1.8rem; color:var(--gold); line-height:1; }
+.score-max { font-size:0.7rem; color:var(--text-muted); }
+.score-label { font-size:0.82rem; font-weight:600; }
+
+/* Score breakdown */
+.score-bars { display:flex; flex-direction:column; gap:10px; width:100%; }
+.score-bar-item { }
+.score-bar-header { display:flex; justify-content:space-between; font-size:0.78rem; margin-bottom:4px; }
+.score-bar-name { color:var(--text-muted); }
+.score-bar-val { font-weight:600; }
+.score-bar-track { height:5px; background:var(--border); border-radius:3px; overflow:hidden; }
+.score-bar-fill { height:100%; border-radius:3px; transition:width 0.8s ease; }
+.score-feedback { margin-top:16px; padding-top:16px; border-top:1px solid var(--border); }
+.score-feedback-title { font-size:0.75rem; font-weight:600; color:var(--text-muted); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:8px; }
+.feedback-item { display:flex; gap:8px; font-size:0.8rem; color:var(--text-muted); padding:5px 0; line-height:1.5; }
+.feedback-item.good { color:var(--green); }
+.feedback-item.warn { color:var(--gold); }
+.feedback-item.bad { color:var(--red); }
+
+/* AI Bullet generator */
+.ai-bullet-wrap { background:var(--surface); border:1px solid var(--gold-dim); border-radius:10px; padding:16px; margin-top:12px; }
+.ai-bullet-title { font-size:0.72rem; font-weight:600; color:var(--gold); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:10px; display:flex; align-items:center; gap:6px; }
+.ai-bullet-row { display:flex; gap:8px; }
+.ai-bullet-input { flex:1; background:var(--card); border:1px solid var(--border); color:var(--text); padding:9px 12px; border-radius:8px; font-family:'DM Sans',sans-serif; font-size:0.85rem; outline:none; }
+.ai-bullet-input:focus { border-color:var(--gold-dim); }
+.ai-bullet-btn { background:var(--gold); color:var(--bg); border:none; padding:9px 16px; border-radius:8px; font-family:'DM Sans',sans-serif; font-size:0.82rem; font-weight:600; cursor:pointer; white-space:nowrap; }
+.ai-bullet-btn:hover { background:var(--gold-light); }
+.ai-bullet-btn:disabled { opacity:0.5; cursor:wait; }
+.ai-results { margin-top:10px; display:flex; flex-direction:column; gap:6px; }
+.ai-bullet-item { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:10px 12px; font-size:0.82rem; color:var(--text-muted); line-height:1.6; display:flex; gap:10px; align-items:flex-start; cursor:pointer; transition:all 0.2s; }
+.ai-bullet-item:hover { border-color:var(--gold-dim); color:var(--text); }
+.ai-bullet-item::before { content:'↓'; color:var(--gold); flex-shrink:0; font-size:0.8rem; margin-top:1px; }
+.ai-bullet-item.copied { border-color:var(--green); color:var(--green); }
+.ai-tip { font-size:0.72rem; color:var(--text-muted); margin-top:6px; }
+
 /* Background */
 .bg-noise { position:fixed; inset:0; opacity:0.03; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-size:200px; pointer-events:none; z-index:0; }
 .bg-glow { position:fixed; top:0; left:50%; transform:translateX(-50%); width:800px; height:300px; background:radial-gradient(ellipse,rgba(245,200,66,0.07) 0%,transparent 65%); pointer-events:none; z-index:0; }
@@ -166,6 +225,65 @@ footer a:hover { color:var(--gold); }
   .templates-grid { grid-template-columns:1fr; }
   .features-grid { grid-template-columns:1fr; }
   nav { display:none; }
+}
+
+/* ATS Score */
+.ats-section { position:relative; z-index:1; max-width:1280px; margin:0 auto; padding:0 48px 60px; }
+.ats-card { background:var(--card); border:1px solid var(--border); border-radius:20px; padding:48px; display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; }
+.ats-eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:0.72rem; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
+.ats-eyebrow::before { content:''; width:24px; height:1px; background:var(--gold); display:inline-block; }
+.ats-card h2 { font-family:'DM Serif Display',serif; font-size:1.8rem; letter-spacing:-0.02em; margin-bottom:12px; line-height:1.2; }
+.ats-card h2 em { color:var(--gold); font-style:italic; }
+.ats-card > div > p { color:var(--text-muted); font-size:0.9rem; line-height:1.7; margin-bottom:20px; }
+.ats-features { display:flex; flex-direction:column; gap:9px; margin-bottom:24px; }
+.ats-feature { display:flex; align-items:center; gap:10px; font-size:0.84rem; color:var(--text-muted); }
+.ats-feature::before { content:''; width:5px; height:5px; background:var(--gold); border-radius:50%; flex-shrink:0; }
+.ats-btn { background:var(--gold); color:var(--bg); border:none; padding:13px 26px; border-radius:10px; font-family:'DM Sans',sans-serif; font-size:0.9rem; font-weight:600; cursor:pointer; transition:all 0.2s; display:inline-flex; align-items:center; gap:8px; }
+.ats-btn:hover { background:var(--gold-light); transform:translateY(-1px); }
+.ats-btn:disabled { opacity:0.6; cursor:wait; transform:none; }
+.ats-panel { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:28px; min-height:280px; display:flex; flex-direction:column; }
+.ats-placeholder { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:10px; }
+.ats-ph-icon { font-size:2.4rem; opacity:0.35; }
+.ats-ph-text { font-size:0.84rem; color:var(--text-muted); line-height:1.6; }
+.score-top { display:flex; align-items:center; gap:18px; margin-bottom:18px; padding-bottom:18px; border-bottom:1px solid var(--border); }
+.score-circle { position:relative; width:96px; height:96px; flex-shrink:0; }
+.score-circle svg { transform:rotate(-90deg); }
+.score-num-wrap { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.score-big { font-family:'DM Serif Display',serif; font-size:1.7rem; line-height:1; }
+.score-sub { font-size:0.65rem; color:var(--text-muted); margin-top:1px; }
+.score-label { font-size:0.84rem; font-weight:600; line-height:1.4; }
+.score-bars { display:flex; flex-direction:column; gap:9px; margin-bottom:14px; }
+.score-bar-header { display:flex; justify-content:space-between; font-size:0.76rem; margin-bottom:4px; }
+.score-bar-name { color:var(--text-muted); }
+.score-bar-val { font-weight:600; }
+.score-bar-track { height:5px; background:var(--border); border-radius:3px; overflow:hidden; }
+.score-bar-fill { height:100%; border-radius:3px; transition:width 0.7s ease; }
+.score-fb-title { font-size:0.68rem; font-weight:600; color:var(--text-muted); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px; }
+.feedback-item { display:flex; gap:8px; font-size:0.79rem; padding:5px 0; line-height:1.5; border-bottom:1px solid var(--border); }
+.feedback-item:last-child { border-bottom:none; }
+.feedback-item.good { color:#4ade80; }
+.feedback-item.warn { color:var(--gold); }
+.feedback-item.bad { color:#f87171; }
+
+/* AI Bullet Generator */
+.ai-bullet-wrap { background:rgba(245,200,66,0.04); border:1px solid var(--gold-dim); border-radius:12px; padding:16px; margin-top:14px; }
+.ai-bullet-head { font-size:0.69rem; font-weight:600; color:var(--gold); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:10px; display:flex; align-items:center; gap:6px; }
+.ai-bullet-row { display:flex; gap:8px; }
+.ai-bullet-input { flex:1; background:var(--card); border:1px solid var(--border); color:var(--text); padding:9px 12px; border-radius:8px; font-family:'DM Sans',sans-serif; font-size:0.85rem; outline:none; transition:border-color 0.2s; }
+.ai-bullet-input:focus { border-color:var(--gold-dim); }
+.ai-gen-btn { background:var(--gold); color:var(--bg); border:none; padding:9px 16px; border-radius:8px; font-family:'DM Sans',sans-serif; font-size:0.82rem; font-weight:600; cursor:pointer; white-space:nowrap; transition:all 0.2s; }
+.ai-gen-btn:hover { background:var(--gold-light); }
+.ai-gen-btn:disabled { opacity:0.5; cursor:wait; }
+.ai-bullet-results { display:flex; flex-direction:column; gap:6px; margin-top:10px; }
+.ai-bullet-item { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:10px 12px; font-size:0.81rem; color:var(--text-muted); line-height:1.6; cursor:pointer; transition:all 0.2s; display:flex; gap:8px; align-items:flex-start; }
+.ai-bullet-item:hover { border-color:var(--gold-dim); color:var(--text); }
+.ai-bullet-item.copied { border-color:#4ade80; color:#4ade80; }
+.ai-bullet-arrow { color:var(--gold); flex-shrink:0; font-size:0.72rem; margin-top:2px; }
+.ai-bullet-tip { font-size:0.71rem; color:var(--text-muted); margin-top:6px; }
+
+@media(max-width:1024px) {
+  .ats-card { grid-template-columns:1fr; gap:32px; padding:32px 24px; }
+  .ats-section { padding-left:24px; padding-right:24px; }
 }
 </style>
 </head>
@@ -362,6 +480,31 @@ footer a:hover { color:var(--gold); }
           </div>
         </div>
         <button class="add-btn" onclick="addExp()">+ Add Another Position</button>
+
+        <!-- AI Bullet Generator -->
+        <div class="ai-bullet-wrap">
+          <div class="ai-bullet-head">✦ AI Bullet Point Generator</div>
+          <div class="ai-bullet-row">
+            <input class="ai-bullet-input" id="bullet-jobtitle" placeholder="e.g. Software Engineer, Marketing Manager...">
+            <button class="ai-gen-btn" id="bullet-btn" onclick="generateBullets()">Generate →</button>
+          </div>
+          <div class="ai-bullet-results" id="bullet-results"></div>
+          <p class="ai-bullet-tip" id="bullet-tip">💡 Click any bullet to copy it, then paste into your description above</p>
+        </div>
+
+        <!-- AI Bullet Generator -->
+        <div class="ai-bullet-wrap">
+          <div class="ai-bullet-title">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.5 3.5L7 9.5 4 11l.5-3.5L2 5l3.5-.5L7 1z" fill="#f5c842"/></svg>
+            AI Bullet Point Generator
+          </div>
+          <div class="ai-bullet-row">
+            <input class="ai-bullet-input" id="bullet-jobtitle" placeholder="e.g. Software Engineer, Marketing Manager...">
+            <button class="ai-bullet-btn" id="bullet-btn" onclick="generateBullets()">Generate →</button>
+          </div>
+          <div id="bullet-results" class="ai-results"></div>
+          <p class="ai-tip" id="bullet-tip" style="display:none">💡 Click any bullet to copy it, then paste into your description above</p>
+        </div>
       </div>
 
       <!-- Education -->
@@ -400,6 +543,104 @@ footer a:hover { color:var(--gold); }
             <div style="font-size:2rem;margin-bottom:12px">📝</div>
             <div style="font-size:0.9rem">Start filling in your details<br>to see your CV come to life</div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ATS SCORE -->
+<div class="ats-section">
+  <div class="ats-card">
+    <div class="ats-left">
+      <div style="display:inline-flex;align-items:center;gap:8px;font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:16px">
+        <span style="width:24px;height:1px;background:var(--gold);display:inline-block"></span>
+        AI-Powered Analysis
+      </div>
+      <h2>Check Your <em>ATS Score</em></h2>
+      <p>98% of Fortune 500 companies use Applicant Tracking Systems to filter CVs before a human sees them. Our AI analyzes your CV and gives you an actionable score with specific improvements.</p>
+      <div class="ats-features">
+        <div class="ats-feature"><div class="ats-feature-dot"></div>Overall ATS compatibility score (0–100)</div>
+        <div class="ats-feature"><div class="ats-feature-dot"></div>Section-by-section breakdown</div>
+        <div class="ats-feature"><div class="ats-feature-dot"></div>Specific fixes to boost your score</div>
+        <div class="ats-feature"><div class="ats-feature-dot"></div>Keyword & format analysis</div>
+      </div>
+      <button class="ats-btn" id="ats-btn" onclick="runATSScore()">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1l1.8 4.2L14 6l-3 2.9.7 4.1L8 11l-3.7 2 .7-4.1L2 6l4.2-.8L8 1z" fill="#0c0c0e"/></svg>
+        Analyse My CV
+      </button>
+      <p style="font-size:0.75rem;color:var(--text-muted);margin-top:12px">Fill in your CV details in the builder above first</p>
+    </div>
+    <div class="ats-right" id="ats-result-panel">
+      <div class="ats-placeholder" id="ats-placeholder">
+        <div class="ats-placeholder-icon">📊</div>
+        <div class="ats-placeholder-text">Your ATS score will appear here.<br>Fill in your CV above and click Analyse.</div>
+      </div>
+      <div id="ats-score-content" style="display:none">
+        <div class="score-display">
+          <div class="score-circle">
+            <svg width="110" height="110" viewBox="0 0 110 110">
+              <circle class="score-circle-track" cx="55" cy="55" r="46"/>
+              <circle class="score-circle-fill" id="score-arc" cx="55" cy="55" r="46" stroke="#f5c842" stroke-dasharray="289" stroke-dashoffset="289"/>
+            </svg>
+            <div class="score-num">
+              <div class="score-val" id="score-number">0</div>
+              <div class="score-max">/100</div>
+            </div>
+          </div>
+          <div class="score-label" id="score-label">—</div>
+        </div>
+        <div class="score-bars" id="score-bars"></div>
+        <div class="score-feedback" id="score-feedback">
+          <div class="score-feedback-title">Recommendations</div>
+          <div id="feedback-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ATS SCORE SECTION -->
+<div class="ats-section">
+  <div class="ats-card">
+    <div>
+      <div class="ats-eyebrow">AI-Powered Analysis</div>
+      <h2>Check Your <em>ATS Score</em></h2>
+      <p>98% of Fortune 500 companies use ATS software to filter CVs before a human ever sees them. Our AI analyses your CV and gives you a real score with specific, actionable fixes.</p>
+      <div class="ats-features">
+        <div class="ats-feature">Overall ATS compatibility score out of 100</div>
+        <div class="ats-feature">Section-by-section breakdown</div>
+        <div class="ats-feature">Specific recommendations to boost your score</div>
+        <div class="ats-feature">Keyword and format analysis</div>
+      </div>
+      <button class="ats-btn" id="ats-btn" onclick="runATSScore()">
+        ✦ Analyse My CV
+      </button>
+      <p style="font-size:0.75rem;color:var(--text-muted);margin-top:12px">Fill in your CV in the builder above first</p>
+    </div>
+    <div class="ats-panel" id="ats-panel">
+      <div class="ats-placeholder" id="ats-placeholder">
+        <div class="ats-ph-icon">📊</div>
+        <div class="ats-ph-text">Your ATS score will appear here.<br>Fill in your CV above and click Analyse.</div>
+      </div>
+      <div id="ats-score-content" style="display:none">
+        <div class="score-top">
+          <div class="score-circle">
+            <svg width="96" height="96" viewBox="0 0 96 96">
+              <circle cx="48" cy="48" r="40" fill="none" stroke="var(--border)" stroke-width="7"/>
+              <circle id="score-arc" cx="48" cy="48" r="40" fill="none" stroke="#f5c842" stroke-width="7" stroke-linecap="round" stroke-dasharray="251" stroke-dashoffset="251"/>
+            </svg>
+            <div class="score-num-wrap">
+              <div class="score-big" id="score-number">0</div>
+              <div class="score-sub">/100</div>
+            </div>
+          </div>
+          <div class="score-label" id="score-label">Analysing...</div>
+        </div>
+        <div class="score-bars" id="score-bars"></div>
+        <div>
+          <div class="score-fb-title">Recommendations</div>
+          <div id="feedback-list"></div>
         </div>
       </div>
     </div>
@@ -614,6 +855,140 @@ function sectionTitle(title, c, isDark) {
     return `<div style="font-size:0.65rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:${c.accent};margin:16px 0 8px">${title}</div><div style="height:1px;background:#222;margin-bottom:12px"></div>`;
   }
   return `<div style="font-size:0.65rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:${c.accent};margin:16px 0 8px">${title}</div><div style="height:2px;background:${c.accent};margin-bottom:12px"></div>`;
+}
+
+// ===== AI BULLET POINT GENERATOR =====
+async function generateBullets() {
+  const jobTitle = document.getElementById('bullet-jobtitle').value.trim();
+  if (!jobTitle) { alert('Please enter a job title first.'); return; }
+  const btn = document.getElementById('bullet-btn');
+  btn.disabled = true; btn.textContent = '⏳ Generating...';
+  const resultsEl = document.getElementById('bullet-results');
+  resultsEl.innerHTML = '<div style="color:var(--text-muted);font-size:0.82rem;padding:8px 0">✨ Writing professional bullet points...</div>';
+  try {
+    const r = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 600,
+        system: 'You are an expert CV writer. Generate exactly 5 professional, ATS-optimised CV bullet points. Each must: start with a strong action verb, include a quantifiable result, be max 15 words, start with •. Output ONLY the 5 bullets, nothing else, no intro text.',
+        messages: [{ role: 'user', content: `Generate 5 strong CV bullet points for: ${jobTitle}` }]
+      })
+    });
+    const d = await r.json();
+    const lines = d.content[0].text.split('\n').filter(l => l.trim());
+    resultsEl.innerHTML = lines.slice(0,5).map(b => {
+      const text = b.replace(/^[•\-\*]\s*/, '').trim();
+      return `<div class="ai-bullet-item" onclick="copyBullet(this,'${text.replace(/'/g,"&apos;")}')">${text}</div>`;
+    }).join('');
+    document.getElementById('bullet-tip').style.display = 'block';
+  } catch(e) {
+    resultsEl.innerHTML = '<div style="color:var(--red);font-size:0.82rem;padding:6px 0">Connection error — please try again.</div>';
+  }
+  btn.disabled = false; btn.textContent = 'Generate →';
+}
+
+function copyBullet(el, text) {
+  navigator.clipboard.writeText('• ' + text).then(() => {
+    const orig = el.textContent;
+    el.classList.add('copied');
+    el.textContent = '✓ Copied to clipboard!';
+    setTimeout(() => { el.classList.remove('copied'); el.textContent = orig; }, 1800);
+  });
+}
+
+// ===== ATS SCORE ANALYZER =====
+async function runATSScore() {
+  const fn = (document.getElementById('fn').value||'').trim();
+  const title = (document.getElementById('title').value||'').trim();
+  const summary = (document.getElementById('summary').value||'').trim();
+  const skills = (document.getElementById('skills').value||'').trim();
+  const expItems = document.querySelectorAll('.exp-item');
+  const expText = Array.from(expItems).map(e => {
+    const jt = e.querySelector('.exp-jobtitle')?.value||'';
+    const co = e.querySelector('.exp-company')?.value||'';
+    const de = e.querySelector('.exp-desc')?.value||'';
+    return `${jt} at ${co}: ${de}`;
+  }).filter(x=>x.trim()!=='at: ').join(' | ');
+
+  if (!fn && !title && !expText) {
+    alert('Please fill in your CV details first (at minimum: name, job title, and one experience entry).');
+    return;
+  }
+
+  const btn = document.getElementById('ats-btn');
+  btn.disabled = true; btn.textContent = '⏳ Analysing...';
+  document.getElementById('ats-placeholder').style.display = 'none';
+  document.getElementById('ats-score-content').style.display = 'none';
+
+  const cvText = `Name: ${fn} | Title: ${title} | Summary: ${summary} | Experience: ${expText} | Skills: ${skills}`;
+
+  try {
+    const r = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 700,
+        system: `You are an ATS expert. Analyze the CV and return ONLY valid JSON, no extra text:
+{"overall":75,"contact":80,"experience":70,"skills":65,"format":85,"keywords":60,"improvements":[{"type":"warn","text":"Add quantifiable achievements to experience"},{"type":"bad","text":"Skills section needs more industry keywords"},{"type":"good","text":"Clear contact information provided"},{"type":"warn","text":"Add a professional summary"}]}
+Scores 0-100. Types: good/warn/bad. Give exactly 4 improvements. Be specific.`,
+        messages: [{ role: 'user', content: `Analyze: ${cvText}` }]
+      })
+    });
+    const d = await r.json();
+    let raw = d.content[0].text.trim().replace(/```json\n?/g,'').replace(/```\n?/g,'').trim();
+    const data = JSON.parse(raw);
+    renderScore(data);
+  } catch(e) {
+    document.getElementById('ats-placeholder').style.display = 'flex';
+    document.getElementById('ats-placeholder').innerHTML = '<div class="ats-placeholder-icon">⚠️</div><div class="ats-placeholder-text">Analysis failed — please try again.</div>';
+  }
+  btn.disabled = false; btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2l1 3 3 .5-2.2 2 .7 3L7 9 4.5 10.5l.7-3L3 5.5 6 5 7 2z" fill="#0c0c0e"/></svg> Re-analyse';
+}
+
+function renderScore(data) {
+  document.getElementById('ats-score-content').style.display = 'block';
+  const score = Math.min(100, Math.max(0, data.overall||0));
+  const circumference = 289;
+  const offset = circumference - (score/100)*circumference;
+  const color = score>=75?'#4ade80':score>=50?'#f5c842':'#f87171';
+  setTimeout(()=>{
+    const arc = document.getElementById('score-arc');
+    arc.style.strokeDashoffset = offset;
+    arc.style.stroke = color;
+  }, 80);
+  // Animate number
+  let cur=0;
+  const t = setInterval(()=>{
+    cur = Math.min(cur+2, score);
+    document.getElementById('score-number').textContent = cur;
+    if(cur>=score) clearInterval(t);
+  }, 18);
+  document.getElementById('score-number').style.color = color;
+  const label = score>=80?'🟢 Excellent — ATS Ready':score>=65?'🟡 Good — Minor Fixes Needed':score>=50?'🟠 Fair — Needs Improvement':'🔴 Poor — Major Issues';
+  document.getElementById('score-label').textContent = label;
+  // Bars
+  const cats=[
+    {name:'Contact Info', val:data.contact||0},
+    {name:'Experience', val:data.experience||0},
+    {name:'Skills', val:data.skills||0},
+    {name:'Formatting', val:data.format||0},
+    {name:'Keywords', val:data.keywords||0}
+  ];
+  document.getElementById('score-bars').innerHTML = cats.map(c=>{
+    const bc = c.val>=75?'#4ade80':c.val>=50?'#f5c842':'#f87171';
+    return `<div class="score-bar-item">
+      <div class="score-bar-header"><span class="score-bar-name">${c.name}</span><span class="score-bar-val" style="color:${bc}">${c.val}</span></div>
+      <div class="score-bar-track"><div class="score-bar-fill" style="width:0%;background:${bc}" data-w="${c.val}%"></div></div>
+    </div>`;
+  }).join('');
+  setTimeout(()=>{ document.querySelectorAll('.score-bar-fill').forEach(b=>b.style.width=b.dataset.w); },100);
+  // Feedback
+  document.getElementById('feedback-list').innerHTML = (data.improvements||[]).map(i=>
+    `<div class="feedback-item ${i.type}">${i.type==='good'?'✓':i.type==='warn'?'⚡':'✗'} ${i.text}</div>`
+  ).join('');
 }
 
 function downloadCV() {
