@@ -208,6 +208,7 @@ footer a:hover{color:var(--gold);}
   .templates-grid{grid-template-columns:1fr;}
   .features-grid{grid-template-columns:1fr;}
   nav{display:none;}
+  .feature-strip-grid{grid-template-columns:1fr !important;}
 }
 </style>
 </head>
@@ -237,7 +238,7 @@ footer a:hover{color:var(--gold);}
     <p class="hero-sub">Build a professional, recruiter-approved resume in minutes. AI bullet point generator, ATS score checker, beautiful templates — all free.</p>
     <div class="hero-actions">
       <a href="#builder" class="btn-primary">Build My CV Free →</a>
-      <a href="#templates" class="btn-secondary">View Templates</a>
+      <a href="#ats" class="btn-secondary">📊 Check ATS Score</a>
     </div>
     <div class="hero-trust">
       <div class="trust-item"><span>✓</span> No signup required</div>
@@ -274,6 +275,28 @@ footer a:hover{color:var(--gold);}
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- Feature Strip -->
+<div style="position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:0 48px 60px;">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+    <a href="#ats" style="text-decoration:none;background:linear-gradient(135deg,rgba(245,200,66,0.08),rgba(245,200,66,0.03));border:1px solid var(--gold-dim);border-radius:16px;padding:24px 28px;display:flex;align-items:center;gap:18px;transition:all 0.2s;cursor:pointer;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--gold-dim)'">
+      <div style="width:48px;height:48px;background:var(--gold);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;">📊</div>
+      <div>
+        <div style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--text);margin-bottom:4px;">ATS Score Checker</div>
+        <div style="font-size:0.8rem;color:var(--text-muted);line-height:1.5;">Get a real score out of 100. See exactly what's stopping your CV from passing ATS filters.</div>
+      </div>
+      <div style="margin-left:auto;color:var(--gold);font-size:1.2rem;flex-shrink:0;">→</div>
+    </a>
+    <a href="#builder" onclick="setTimeout(()=>{document.querySelectorAll('.form-tab')[1].click()},100)" style="text-decoration:none;background:linear-gradient(135deg,rgba(245,200,66,0.08),rgba(245,200,66,0.03));border:1px solid var(--gold-dim);border-radius:16px;padding:24px 28px;display:flex;align-items:center;gap:18px;transition:all 0.2s;cursor:pointer;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--gold-dim)'">
+      <div style="width:48px;height:48px;background:var(--gold);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;">✦</div>
+      <div>
+        <div style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--text);margin-bottom:4px;">AI Bullet Generator</div>
+        <div style="font-size:0.8rem;color:var(--text-muted);line-height:1.5;">Generate 5 professional, keyword-rich bullet points for any job title with one click.</div>
+      </div>
+      <div style="margin-left:auto;color:var(--gold);font-size:1.2rem;flex-shrink:0;">→</div>
+    </a>
   </div>
 </div>
 
@@ -325,7 +348,7 @@ footer a:hover{color:var(--gold);}
     <div class="builder-form">
       <div class="form-tabs">
         <button class="form-tab active" onclick="switchTab('personal',this)">Personal</button>
-        <button class="form-tab" onclick="switchTab('experience',this)">Experience</button>
+        <button class="form-tab" onclick="switchTab('experience',this)">Experience ✦</button>
         <button class="form-tab" onclick="switchTab('education',this)">Education</button>
         <button class="form-tab" onclick="switchTab('skills',this)">Skills</button>
       </div>
@@ -363,9 +386,13 @@ footer a:hover{color:var(--gold);}
 
         <!-- AI Bullet Generator -->
         <div class="ai-bullet-wrap">
-          <div class="ai-bullet-head">✦ AI Bullet Point Generator</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+            <div class="ai-bullet-head" style="margin-bottom:0">✦ AI Bullet Point Generator</div>
+            <span style="background:var(--gold);color:var(--bg);font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:100px;letter-spacing:0.06em;">FREE AI</span>
+          </div>
+          <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:10px;line-height:1.5;">Enter your job title → get 5 professional, ATS-optimised bullet points instantly. Click any to copy.</p>
           <div class="ai-bullet-row">
-            <input class="ai-bullet-input" id="bullet-jobtitle" placeholder="e.g. Software Engineer, Marketing Manager...">
+            <input class="ai-bullet-input" id="bullet-jobtitle" placeholder="e.g. Software Engineer, Marketing Manager, Nurse...">
             <button class="ai-gen-btn" id="bullet-btn" onclick="generateBullets()">Generate →</button>
           </div>
           <div class="ai-bullet-results" id="bullet-results"></div>
