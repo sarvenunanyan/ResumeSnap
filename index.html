@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CDYCGHQD8G"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -11,18 +10,12 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ResumeSnap — Free AI CV & Resume Builder</title>
+<title>ResumeSnap — Free AI CV &amp; Resume Builder</title>
 <meta name="description" content="Build a professional CV in minutes. Free templates, AI bullet point generator, ATS score checker and instant PDF download. No signup required.">
 <meta name="keywords" content="resume builder, CV builder, ATS resume, AI resume, free CV maker 2025">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Georgia&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg:#0c0c0e; --surface:#141416; --card:#1a1a1e; --card2:#202025;
-  --border:#2a2a32; --border2:#36363f;
-  --gold:#f5c842; --gold-light:#ffd966; --gold-dim:#3d3100;
-  --text:#f0ede8; --text-muted:#7a7670; --text-dim:#2e2e34;
-  --green:#4ade80; --red:#f87171;
-}
+:root{--bg:#0c0c0e;--surface:#141416;--card:#1a1a1e;--border:#2a2a32;--border2:#36363f;--gold:#f5c842;--gold-light:#ffd966;--gold-dim:#3d3100;--text:#f0ede8;--text-muted:#7a7670;--text-dim:#2e2e34;--green:#4ade80;--red:#f87171;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;min-height:100vh;overflow-x:hidden;}
 .bg-noise{position:fixed;inset:0;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;pointer-events:none;z-index:0;}
@@ -45,9 +38,9 @@ nav{display:flex;align-items:center;gap:4px;}
 .hero-sub{color:var(--text-muted);font-size:1rem;line-height:1.75;max-width:460px;margin-bottom:36px;}
 .hero-actions{display:flex;gap:12px;align-items:center;margin-bottom:48px;}
 .btn-primary{background:var(--gold);color:var(--bg);font-weight:600;font-size:0.9rem;padding:13px 28px;border-radius:10px;text-decoration:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;}
-.btn-primary:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 8px 24px rgba(245,200,66,0.25);}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-1px);}
 .btn-secondary{background:transparent;color:var(--text-muted);font-size:0.88rem;padding:13px 24px;border-radius:10px;border:1px solid var(--border2);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.2s;}
-.btn-secondary:hover{color:var(--text);border-color:var(--gold-dim);}
+.btn-secondary:hover{color:var(--text);}
 .hero-trust{display:flex;gap:24px;flex-wrap:wrap;}
 .trust-item{display:flex;align-items:center;gap:8px;font-size:0.8rem;color:var(--text-muted);}
 .trust-item span{color:var(--green);}
@@ -79,14 +72,16 @@ nav{display:flex;align-items:center;gap:4px;}
 .section-sub{color:var(--text-muted);font-size:0.9rem;margin-bottom:36px;}
 .templates-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
 .template-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:all 0.25s;position:relative;}
-.template-card:hover{border-color:var(--gold-dim);transform:translateY(-3px);box-shadow:0 16px 48px rgba(245,200,66,0.08);}
+.template-card:hover{border-color:var(--gold-dim);transform:translateY(-3px);}
 .template-card.selected{border-color:var(--gold);}
 .template-badge{position:absolute;top:12px;right:12px;background:var(--gold);color:var(--bg);font-size:0.65rem;font-weight:600;padding:3px 10px;border-radius:100px;}
 .template-preview{background:white;padding:20px 16px;height:180px;overflow:hidden;position:relative;}
-
 .template-info{padding:16px;}
 .template-name{font-weight:600;font-size:0.9rem;margin-bottom:4px;}
 .template-desc{font-size:0.78rem;color:var(--text-muted);line-height:1.5;}
+.font-btn{background:var(--card);border:1px solid var(--border);color:var(--text);padding:14px;border-radius:10px;cursor:pointer;transition:all 0.2s;text-align:center;width:100%;}
+.font-btn:hover{border-color:var(--border2);}
+.font-btn.active{border-color:var(--gold);}
 .builder-section{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:0 48px 80px;}
 .builder-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;}
 .builder-form{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
@@ -109,10 +104,9 @@ textarea.form-input{resize:vertical;min-height:80px;line-height:1.6;}
 .ai-bullet-wrap{background:rgba(245,200,66,0.04);border:1px solid var(--gold-dim);border-radius:12px;padding:16px;margin-top:14px;}
 .ai-bullet-head{font-size:0.69rem;font-weight:600;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
 .ai-bullet-row{display:flex;gap:8px;}
-.ai-bullet-input{flex:1;background:var(--card);border:1px solid var(--border);color:var(--text);padding:9px 12px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.85rem;outline:none;transition:border-color 0.2s;}
+.ai-bullet-input{flex:1;background:var(--card);border:1px solid var(--border);color:var(--text);padding:9px 12px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.85rem;outline:none;}
 .ai-bullet-input:focus{border-color:var(--gold-dim);}
-.ai-gen-btn{background:var(--gold);color:var(--bg);border:none;padding:9px 16px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:all 0.2s;}
-.ai-gen-btn:hover{background:var(--gold-light);}
+.ai-gen-btn{background:var(--gold);color:var(--bg);border:none;padding:9px 16px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;white-space:nowrap;}
 .ai-gen-btn:disabled{opacity:0.5;cursor:wait;}
 .ai-bullet-results{display:flex;flex-direction:column;gap:6px;margin-top:10px;}
 .ai-bullet-item{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:0.81rem;color:var(--text-muted);line-height:1.6;cursor:pointer;transition:all 0.2s;display:flex;gap:8px;align-items:flex-start;}
@@ -121,7 +115,6 @@ textarea.form-input{resize:vertical;min-height:80px;line-height:1.6;}
 .ai-bullet-arrow{color:var(--gold);flex-shrink:0;font-size:0.72rem;margin-top:2px;}
 .ai-bullet-tip{font-size:0.71rem;color:var(--text-muted);margin-top:6px;}
 .cv-live{background:white;border-radius:12px;box-shadow:0 24px 60px rgba(0,0,0,0.5);overflow:hidden;min-height:400px;}
-.cv-live-inner{padding:32px 28px;font-family:'DM Sans',sans-serif;color:#111;}
 .ats-section{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:0 48px 80px;}
 .ats-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
 .ats-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
@@ -181,22 +174,14 @@ footer a:hover{color:var(--gold);}
   .ats-card{grid-template-columns:1fr;gap:32px;padding:32px 24px;}
   header,footer,.template-section,.builder-section,.features-section,.ats-section{padding-left:24px;padding-right:24px;}
 }
-@media(max-width:640px){
-  .templates-grid{grid-template-columns:1fr;}
-  .features-grid{grid-template-columns:1fr;}
-  nav{display:none;}
-}
+@media(max-width:640px){.templates-grid{grid-template-columns:1fr;}.features-grid{grid-template-columns:1fr;}nav{display:none;}}
 </style>
 </head>
 <body>
 <div class="bg-noise"></div>
 <div class="bg-glow"></div>
-
 <header>
-  <a href="index.html" class="logo">
-    <div class="logo-mark">📄</div>
-    <span class="logo-text">Resume<em>Snap</em></span>
-  </a>
+  <a href="index.html" class="logo"><div class="logo-mark">📄</div><span class="logo-text">Resume<em>Snap</em></span></a>
   <nav>
     <a href="#templates" class="nav-link">Templates</a>
     <a href="#builder" class="nav-link">Builder</a>
@@ -243,9 +228,7 @@ footer a:hover{color:var(--gold);}
           <div class="cv-item-sub">Central Saint Martins · London</div>
         </div>
         <div class="cv-section-title">Skills</div>
-        <div class="cv-skill-grid">
-          <span class="cv-skill">Figma</span><span class="cv-skill">Sketch</span><span class="cv-skill">User Research</span><span class="cv-skill">Design Systems</span>
-        </div>
+        <div class="cv-skill-grid"><span class="cv-skill">Figma</span><span class="cv-skill">Sketch</span><span class="cv-skill">User Research</span><span class="cv-skill">Design Systems</span></div>
       </div>
     </div>
   </div>
@@ -258,7 +241,7 @@ footer a:hover{color:var(--gold);}
       <div><div style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--text);margin-bottom:4px;">ATS Score Checker</div><div style="font-size:0.8rem;color:var(--text-muted);line-height:1.5;">Get a real score out of 100. See exactly what's stopping your CV from passing ATS filters.</div></div>
       <div style="margin-left:auto;color:var(--gold);font-size:1.2rem;flex-shrink:0;">→</div>
     </a>
-    <a href="#builder" onclick="setTimeout(()=>{document.querySelectorAll('.form-tab')[1].click()},100)" style="text-decoration:none;background:linear-gradient(135deg,rgba(245,200,66,0.08),rgba(245,200,66,0.03));border:1px solid var(--gold-dim);border-radius:16px;padding:24px 28px;display:flex;align-items:center;gap:18px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--gold-dim)'">
+    <a href="#builder" onclick="setTimeout(function(){document.querySelectorAll('.form-tab')[1].click();},100)" style="text-decoration:none;background:linear-gradient(135deg,rgba(245,200,66,0.08),rgba(245,200,66,0.03));border:1px solid var(--gold-dim);border-radius:16px;padding:24px 28px;display:flex;align-items:center;gap:18px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--gold-dim)'">
       <div style="width:48px;height:48px;background:var(--gold);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;">✦</div>
       <div><div style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--text);margin-bottom:4px;">AI Bullet Generator</div><div style="font-size:0.8rem;color:var(--text-muted);line-height:1.5;">Generate 5 professional, keyword-rich bullet points for any job title with one click.</div></div>
       <div style="margin-left:auto;color:var(--gold);font-size:1.2rem;flex-shrink:0;">→</div>
@@ -289,7 +272,7 @@ footer a:hover{color:var(--gold);}
         <div style="height:1px;background:#333;margin:4px 0 8px"></div>
         <div style="font-size:0.65rem;color:#eee;font-weight:600;font-family:'DM Sans',sans-serif">Senior Developer · Tech Co</div>
       </div>
-      <div class="template-info"><div class="template-name">Modern Dark</div><div class="template-desc">Bold & contemporary — perfect for tech roles</div></div>
+      <div class="template-info"><div class="template-name">Modern Dark</div><div class="template-desc">Bold &amp; contemporary — perfect for tech roles</div></div>
     </div>
     <div class="template-card" onclick="selectTemplate('minimal',this)">
       <div class="template-badge" style="background:#4ade80;color:#0c0c0e">ATS Best</div>
@@ -302,16 +285,26 @@ footer a:hover{color:var(--gold);}
       <div class="template-info"><div class="template-name">Clean Minimal</div><div class="template-desc">Ultra-clean — highest ATS compatibility</div></div>
     </div>
   </div>
-</div>
 
-<div class="builder-section" id="font-section" style="padding-bottom:0;margin-bottom:0;">
-  <div style="max-width:1280px;margin:0 auto;padding:0 48px 40px;">
-    <div class="section-eyebrow" style="margin-bottom:8px;">Font Style</div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px;">
-      <button class="font-btn active" id="font-dm" onclick="setFont('DM Serif Display',this)" style="background:var(--card);border:1px solid var(--gold);color:var(--text);padding:14px;border-radius:10px;cursor:pointer;font-family:'DM Serif Display',serif;font-size:1rem;transition:all 0.2s;">Classic<br><span style="font-size:0.7rem;font-family:'DM Sans',sans-serif;color:var(--text-muted);">DM Serif</span></button>
-      <button class="font-btn" id="font-sans" onclick="setFont('DM Sans',this)" style="background:var(--card);border:1px solid var(--border);color:var(--text);padding:14px;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:1rem;transition:all 0.2s;">Modern<br><span style="font-size:0.7rem;color:var(--text-muted);">DM Sans</span></button>
-      <button class="font-btn" id="font-playfair" onclick="setFont('Playfair Display',this)" style="background:var(--card);border:1px solid var(--border);color:var(--text);padding:14px;border-radius:10px;cursor:pointer;font-family:'Playfair Display',serif;font-size:1rem;transition:all 0.2s;">Elegant<br><span style="font-size:0.7rem;font-family:'DM Sans',sans-serif;color:var(--text-muted);">Playfair</span></button>
-      <button class="font-btn" id="font-georgia" onclick="setFont('Georgia',this)" style="background:var(--card);border:1px solid var(--border);color:var(--text);padding:14px;border-radius:10px;cursor:pointer;font-family:Georgia,serif;font-size:1rem;transition:all 0.2s;">Corporate<br><span style="font-size:0.7rem;font-family:'DM Sans',sans-serif;color:var(--text-muted);">Georgia</span></button>
+  <div style="margin-top:40px;">
+    <div class="section-eyebrow" style="margin-bottom:12px;">Font Style</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+      <button class="font-btn active" onclick="setFont('DM Serif Display','serif',this)">
+        <div style="font-family:'DM Serif Display',serif;font-size:1rem;margin-bottom:4px;">Classic</div>
+        <div style="font-size:0.7rem;color:var(--text-muted);font-family:'DM Sans',sans-serif;">DM Serif</div>
+      </button>
+      <button class="font-btn" onclick="setFont('DM Sans','sans-serif',this)">
+        <div style="font-family:'DM Sans',sans-serif;font-size:1rem;margin-bottom:4px;">Modern</div>
+        <div style="font-size:0.7rem;color:var(--text-muted);">DM Sans</div>
+      </button>
+      <button class="font-btn" onclick="setFont('Playfair Display','serif',this)">
+        <div style="font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:4px;">Elegant</div>
+        <div style="font-size:0.7rem;color:var(--text-muted);font-family:'DM Sans',sans-serif;">Playfair</div>
+      </button>
+      <button class="font-btn" onclick="setFont('Georgia','serif',this)">
+        <div style="font-family:Georgia,serif;font-size:1rem;margin-bottom:4px;">Corporate</div>
+        <div style="font-size:0.7rem;color:var(--text-muted);font-family:'DM Sans',sans-serif;">Georgia</div>
+      </button>
     </div>
   </div>
 </div>
@@ -321,19 +314,18 @@ footer a:hover{color:var(--gold);}
   <div class="section-title">Fill In. Preview. Download.</div>
   <p class="section-sub" style="margin-bottom:20px">Your CV updates in real time as you type.</p>
 
-  <!-- Import CV -->
   <div style="background:rgba(245,200,66,0.04);border:1px solid var(--gold-dim);border-radius:14px;padding:20px 24px;margin-bottom:28px;">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;">
       <div>
         <div style="font-size:0.75rem;font-weight:600;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;">✦ Import Existing CV</div>
         <div style="font-size:0.8rem;color:var(--text-muted);">Paste your current CV text — AI will fill the form automatically.</div>
       </div>
-      <button onclick="toggleImport()" id="import-toggle-btn" style="background:var(--gold);color:var(--bg);border:none;padding:8px 18px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;white-space:nowrap;margin-left:16px;">Paste CV →</button>
+      <button id="import-toggle-btn" onclick="toggleImport()" style="background:var(--gold);color:var(--bg);border:none;padding:8px 18px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;white-space:nowrap;margin-left:16px;">Paste CV →</button>
     </div>
-    <div id="import-area" style="display:none;margin-top:12px;">
-      <textarea id="import-text" style="width:100%;background:var(--card);border:1px solid var(--border);color:var(--text);padding:12px 14px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.85rem;outline:none;resize:vertical;min-height:120px;line-height:1.6;" placeholder="Paste your CV text here... e.g.: John Smith | Senior Designer at Spotify 2020-Present | BA Graphic Design 2018 | Skills: Figma, Sketch"></textarea>
-      <div style="display:flex;gap:10px;margin-top:10px;align-items:center;">
-        <button onclick="importCV()" id="import-btn" style="background:var(--gold);color:var(--bg);border:none;padding:10px 22px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:600;cursor:pointer;transition:all 0.2s;">✦ Auto-fill Form</button>
+    <div id="import-area" style="display:none;margin-top:16px;">
+      <textarea id="import-text" class="form-input" rows="6" placeholder="Paste your CV text here..."></textarea>
+      <div style="display:flex;gap:10px;margin-top:10px;align-items:center;flex-wrap:wrap;">
+        <button id="import-btn" onclick="importCV()" style="background:var(--gold);color:var(--bg);border:none;padding:10px 22px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:600;cursor:pointer;">✦ Auto-fill Form</button>
         <button onclick="toggleImport()" style="background:transparent;color:var(--text-muted);border:1px solid var(--border);padding:10px 16px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.82rem;cursor:pointer;">Cancel</button>
         <span id="import-status" style="font-size:0.78rem;color:var(--text-muted);"></span>
       </div>
@@ -378,11 +370,11 @@ footer a:hover{color:var(--gold);}
         <div class="ai-bullet-wrap">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
             <div class="ai-bullet-head" style="margin-bottom:0">✦ AI Bullet Point Generator</div>
-            <span style="background:var(--gold);color:var(--bg);font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:100px;letter-spacing:0.06em;">FREE AI</span>
+            <span style="background:var(--gold);color:var(--bg);font-size:0.65rem;font-weight:700;padding:2px 8px;border-radius:100px;">FREE AI</span>
           </div>
           <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:10px;line-height:1.5;">Enter your job title → get 5 professional, ATS-optimised bullet points instantly. Click any to copy.</p>
           <div class="ai-bullet-row">
-            <input class="ai-bullet-input" id="bullet-jobtitle" placeholder="e.g. Software Engineer, Marketing Manager, Nurse...">
+            <input class="ai-bullet-input" id="bullet-jobtitle" placeholder="e.g. Software Engineer, Marketing Manager...">
             <button class="ai-gen-btn" id="bullet-btn" onclick="generateBullets()">Generate →</button>
           </div>
           <div class="ai-bullet-results" id="bullet-results"></div>
@@ -415,7 +407,7 @@ footer a:hover{color:var(--gold);}
     <div>
       <div class="preview-label" style="color:var(--text-muted)">Live Preview</div>
       <div class="cv-live" id="cv-output">
-        <div class="cv-live-inner" id="cv-content">
+        <div id="cv-content">
           <div style="text-align:center;padding:60px 20px;color:#aaa;font-family:'DM Sans',sans-serif">
             <div style="font-size:2rem;margin-bottom:12px">📝</div>
             <div style="font-size:0.9rem">Start filling in your details<br>to see your CV come to life</div>
@@ -453,18 +445,12 @@ footer a:hover{color:var(--gold);}
               <circle cx="48" cy="48" r="40" fill="none" stroke="var(--border)" stroke-width="7"/>
               <circle id="score-arc" cx="48" cy="48" r="40" fill="none" stroke="#f5c842" stroke-width="7" stroke-linecap="round" stroke-dasharray="251" stroke-dashoffset="251"/>
             </svg>
-            <div class="score-num-wrap">
-              <div class="score-big" id="score-number">0</div>
-              <div class="score-sub">/100</div>
-            </div>
+            <div class="score-num-wrap"><div class="score-big" id="score-number">0</div><div class="score-sub">/100</div></div>
           </div>
           <div class="score-label" id="score-label"></div>
         </div>
         <div class="score-bars" id="score-bars"></div>
-        <div>
-          <div class="score-fb-title">Recommendations</div>
-          <div id="feedback-list"></div>
-        </div>
+        <div><div class="score-fb-title">Recommendations</div><div id="feedback-list"></div></div>
       </div>
     </div>
   </div>
@@ -480,58 +466,39 @@ footer a:hover{color:var(--gold);}
 </div>
 
 <footer>
-  <p>© 2025 ResumeSnap.net — Free CV & resume builder. Your data stays private.</p>
-  <div style="display:flex;gap:20px">
-    <a href="privacy.html">Privacy</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </div>
+  <p>© 2025 ResumeSnap.net — Free CV &amp; resume builder. Your data stays private.</p>
+  <div style="display:flex;gap:20px"><a href="privacy.html">Privacy</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
 </footer>
 
 <script>
-let selectedTemplate = 'classic';
-let selectedFont = 'DM Serif Display';
-let selectedFontStack = "'DM Serif Display',serif";
+var selectedTemplate = 'classic';
+var selectedFont = 'DM Serif Display';
+var selectedFontType = 'serif';
+
+function setFont(font, type, btn) {
+  selectedFont = font;
+  selectedFontType = type;
+  document.querySelectorAll('.font-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  updateCV();
+}
 
 function selectTemplate(t, card) {
   selectedTemplate = t;
-  document.querySelectorAll('.template-card').forEach(c => c.classList.remove('selected'));
+  document.querySelectorAll('.template-card').forEach(function(c) { c.classList.remove('selected'); });
   card.classList.add('selected');
   updateCV();
 }
 
-function setFont(font, btn) {
-  selectedFont = font;
-  selectedFontStack = font === 'DM Sans' ? "'DM Sans',sans-serif" : "'" + font + "',serif";
-  document.querySelectorAll('.font-btn').forEach(b => {
-    b.style.borderColor = 'var(--border)';
-  });
-  btn.style.borderColor = 'var(--gold)';
-  // Dynamically load font if needed
-  const fontUrls = {
-    'Playfair Display': 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap',
-    'DM Serif Display': 'https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap',
-    'DM Sans': 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap'
-  };
-  if (fontUrls[font] && !document.querySelector('link[data-font="' + font + '"]')) {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = fontUrls[font];
-    link.setAttribute('data-font', font);
-    document.head.appendChild(link);
-  }
-  setTimeout(updateCV, 100);
-}
-
 function switchTab(tab, btn) {
-  document.querySelectorAll('.form-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.form-tab').forEach(function(t) { t.classList.remove('active'); });
+  document.querySelectorAll('.form-panel').forEach(function(p) { p.classList.remove('active'); });
   btn.classList.add('active');
   document.getElementById('tab-' + tab).classList.add('active');
 }
 
 function addExp() {
-  const div = document.createElement('div');
+  var div = document.createElement('div');
   div.className = 'exp-item';
   div.style.cssText = 'border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:12px';
   div.innerHTML = '<div class="form-field"><label class="form-label">Job Title</label><input class="form-input exp-jobtitle" placeholder="Job Title" oninput="updateCV()"></div><div class="form-field"><label class="form-label">Company</label><input class="form-input exp-company" placeholder="Company Name" oninput="updateCV()"></div><div class="form-field-row"><div class="form-field"><label class="form-label">Start</label><input class="form-input exp-start" placeholder="2020" oninput="updateCV()"></div><div class="form-field"><label class="form-label">End</label><input class="form-input exp-end" placeholder="Present" oninput="updateCV()"></div></div><div class="form-field"><label class="form-label">Description</label><textarea class="form-input exp-desc" placeholder="Key achievements..." oninput="updateCV()"></textarea></div>';
@@ -539,7 +506,7 @@ function addExp() {
 }
 
 function addEdu() {
-  const div = document.createElement('div');
+  var div = document.createElement('div');
   div.className = 'edu-item';
   div.style.cssText = 'border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:12px';
   div.innerHTML = '<div class="form-field"><label class="form-label">Degree</label><input class="form-input edu-degree" placeholder="BSc Computer Science" oninput="updateCV()"></div><div class="form-field"><label class="form-label">Institution</label><input class="form-input edu-school" placeholder="University Name" oninput="updateCV()"></div><div class="form-field-row"><div class="form-field"><label class="form-label">Start</label><input class="form-input edu-start" placeholder="2016" oninput="updateCV()"></div><div class="form-field"><label class="form-label">End</label><input class="form-input edu-end" placeholder="2020" oninput="updateCV()"></div></div>';
@@ -548,31 +515,40 @@ function addEdu() {
 
 function getColors() {
   if (selectedTemplate === 'classic') return {accent:'#f5c842',bg:'white',text:'#111',muted:'#666',border:'2px solid #f5c842'};
-  if (selectedTemplate === 'modern')  return {accent:'#f5c842',bg:'#0c0c0e',text:'#eee',muted:'#888',border:'1px solid #222'};
+  if (selectedTemplate === 'modern') return {accent:'#f5c842',bg:'#0c0c0e',text:'#eee',muted:'#888',border:'1px solid #222'};
   return {accent:'#333',bg:'white',text:'#111',muted:'#555',border:'1px solid #eee'};
 }
 
-function updateCV() {
-  const fn = document.getElementById('fn').value || 'Your Name';
-  const ln = document.getElementById('ln').value || '';
-  const title = document.getElementById('title').value || 'Your Job Title';
-  const email = document.getElementById('email').value;
-  const phone = document.getElementById('phone').value;
-  const loc = document.getElementById('location').value;
-  const li = document.getElementById('linkedin').value;
-  const summary = document.getElementById('summary').value;
-  const skillsRaw = document.getElementById('skills').value;
-  const langs = document.getElementById('languages').value;
-  const certs = document.getElementById('certs').value;
-  const c = getColors();
-  const isDark = selectedTemplate === 'modern';
+function getFontStack() {
+  return "'" + selectedFont + "'," + selectedFontType;
+}
 
-  let html = '<div style="background:' + c.bg + ';padding:32px 28px;font-family:' + (selectedFontStack||"'DM Serif Display',serif") + ';color:' + c.text + '">';
+function updateCV() {
+  var fn = document.getElementById('fn').value || 'Your Name';
+  var ln = document.getElementById('ln').value || '';
+  var titleV = document.getElementById('title').value || 'Your Job Title';
+  var email = document.getElementById('email').value;
+  var phone = document.getElementById('phone').value;
+  var loc = document.getElementById('location').value;
+  var li = document.getElementById('linkedin').value;
+  var summary = document.getElementById('summary').value;
+  var skillsRaw = document.getElementById('skills').value;
+  var langs = document.getElementById('languages').value;
+  var certs = document.getElementById('certs').value;
+  var c = getColors();
+  var isDark = selectedTemplate === 'modern';
+  var fs = getFontStack();
+
+  var html = '<div style="background:' + c.bg + ';padding:32px 28px;font-family:' + fs + ';color:' + c.text + '">';
   html += '<div style="border-bottom:' + c.border + ';padding-bottom:16px;margin-bottom:20px">';
-  html += '<div style="font-family:' + (selectedFontStack||"'DM Serif Display',serif") + ';font-size:1.8rem;color:' + c.text + ';letter-spacing:-0.02em">' + fn + ' ' + ln + '</div>';
-  html += '<div style="font-size:0.85rem;color:' + c.muted + ';margin-top:4px">' + title + '</div>';
-  const contacts = [email,phone,loc,li].filter(Boolean);
-  if (contacts.length) html += '<div style="display:flex;gap:14px;margin-top:8px;flex-wrap:wrap">' + contacts.map(x => '<span style="font-size:0.75rem;color:' + c.muted + '">' + x + '</span>').join('') + '</div>';
+  html += '<div style="font-family:' + fs + ';font-size:1.8rem;color:' + c.text + ';letter-spacing:-0.02em">' + fn + ' ' + ln + '</div>';
+  html += '<div style="font-size:0.85rem;color:' + c.muted + ';margin-top:4px">' + titleV + '</div>';
+  var contacts = [email,phone,loc,li].filter(Boolean);
+  if (contacts.length) {
+    html += '<div style="display:flex;gap:14px;margin-top:8px;flex-wrap:wrap">';
+    for (var i=0;i<contacts.length;i++) html += '<span style="font-size:0.75rem;color:' + c.muted + '">' + contacts[i] + '</span>';
+    html += '</div>';
+  }
   html += '</div>';
 
   if (summary) {
@@ -580,58 +556,67 @@ function updateCV() {
     html += '<p style="font-size:0.82rem;color:' + c.muted + ';line-height:1.7;margin-bottom:16px">' + summary + '</p>';
   }
 
-  const expData = [];
-  document.querySelectorAll('.exp-item').forEach(item => {
-    const jt = item.querySelector('.exp-jobtitle')?.value;
-    const co = item.querySelector('.exp-company')?.value;
-    const st = item.querySelector('.exp-start')?.value;
-    const en = item.querySelector('.exp-end')?.value;
-    const de = item.querySelector('.exp-desc')?.value;
-    if (jt || co) expData.push({jt,co,st,en,de});
-  });
+  var expItems = document.querySelectorAll('.exp-item');
+  var expData = [];
+  for (var i=0;i<expItems.length;i++) {
+    var item = expItems[i];
+    var jt = item.querySelector('.exp-jobtitle') ? item.querySelector('.exp-jobtitle').value : '';
+    var co = item.querySelector('.exp-company') ? item.querySelector('.exp-company').value : '';
+    var st = item.querySelector('.exp-start') ? item.querySelector('.exp-start').value : '';
+    var en = item.querySelector('.exp-end') ? item.querySelector('.exp-end').value : '';
+    var de = item.querySelector('.exp-desc') ? item.querySelector('.exp-desc').value : '';
+    if (jt || co) expData.push({jt:jt,co:co,st:st,en:en,de:de});
+  }
   if (expData.length) {
     html += secTitle('Experience', c, isDark);
-    expData.forEach(e => {
+    for (var i=0;i<expData.length;i++) {
+      var e = expData[i];
       html += '<div style="margin-bottom:14px"><div style="display:flex;justify-content:space-between;align-items:baseline">';
       html += '<div style="font-size:0.85rem;font-weight:600;color:' + c.text + '">' + (e.jt||'') + '</div>';
-      if (e.st||e.en) html += '<div style="font-size:0.72rem;color:' + c.muted + '">' + (e.st||'') + (e.en?' – '+e.en:'') + '</div>';
+      if (e.st||e.en) html += '<div style="font-size:0.72rem;color:' + c.muted + '">' + (e.st||'') + (e.en?' - '+e.en:'') + '</div>';
       html += '</div>';
       if (e.co) html += '<div style="font-size:0.78rem;color:' + c.muted + ';margin-top:2px">' + e.co + '</div>';
       if (e.de) {
-        const bullets = e.de.split('\n').filter(Boolean);
+        var bullets = e.de.split('\n').filter(Boolean);
         html += '<ul style="padding-left:16px;margin-top:6px">';
-        bullets.forEach(b => { html += '<li style="font-size:0.78rem;color:' + c.muted + ';line-height:1.6;list-style:disc">' + b + '</li>'; });
+        for (var j=0;j<bullets.length;j++) html += '<li style="font-size:0.78rem;color:' + c.muted + ';line-height:1.6;list-style:disc">' + bullets[j] + '</li>';
         html += '</ul>';
       }
       html += '</div>';
-    });
+    }
   }
 
-  const eduData = [];
-  document.querySelectorAll('.edu-item').forEach(item => {
-    const deg = item.querySelector('.edu-degree')?.value;
-    const sch = item.querySelector('.edu-school')?.value;
-    const st = item.querySelector('.edu-start')?.value;
-    const en = item.querySelector('.edu-end')?.value;
-    if (deg||sch) eduData.push({deg,sch,st,en});
-  });
+  var eduItems = document.querySelectorAll('.edu-item');
+  var eduData = [];
+  for (var i=0;i<eduItems.length;i++) {
+    var item = eduItems[i];
+    var deg = item.querySelector('.edu-degree') ? item.querySelector('.edu-degree').value : '';
+    var sch = item.querySelector('.edu-school') ? item.querySelector('.edu-school').value : '';
+    var st = item.querySelector('.edu-start') ? item.querySelector('.edu-start').value : '';
+    var en = item.querySelector('.edu-end') ? item.querySelector('.edu-end').value : '';
+    if (deg||sch) eduData.push({deg:deg,sch:sch,st:st,en:en});
+  }
   if (eduData.length) {
     html += secTitle('Education', c, isDark);
-    eduData.forEach(e => {
+    for (var i=0;i<eduData.length;i++) {
+      var e = eduData[i];
       html += '<div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between">';
       html += '<div style="font-size:0.85rem;font-weight:600;color:' + c.text + '">' + (e.deg||'') + '</div>';
-      if (e.st||e.en) html += '<div style="font-size:0.72rem;color:' + c.muted + '">' + (e.st||'') + (e.en?' – '+e.en:'') + '</div>';
+      if (e.st||e.en) html += '<div style="font-size:0.72rem;color:' + c.muted + '">' + (e.st||'') + (e.en?' - '+e.en:'') + '</div>';
       html += '</div>';
       if (e.sch) html += '<div style="font-size:0.78rem;color:' + c.muted + '">' + e.sch + '</div>';
       html += '</div>';
-    });
+    }
   }
 
   if (skillsRaw) {
     html += secTitle('Skills', c, isDark);
-    const skills = skillsRaw.split(',').map(s=>s.trim()).filter(Boolean);
+    var skills = skillsRaw.split(',');
     html += '<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px">';
-    skills.forEach(s => { html += '<span style="background:' + (isDark?'#1a1a1e':'#f5f5f5') + ';border:1px solid ' + (isDark?'#333':'#e0e0e0') + ';padding:3px 10px;border-radius:4px;font-size:0.75rem;color:' + (isDark?c.accent:c.text) + '">' + s + '</span>'; });
+    for (var i=0;i<skills.length;i++) {
+      var s = skills[i].trim();
+      if (s) html += '<span style="background:' + (isDark?'#1a1a1e':'#f5f5f5') + ';border:1px solid ' + (isDark?'#333':'#e0e0e0') + ';padding:3px 10px;border-radius:4px;font-size:0.75rem;color:' + (isDark?c.accent:c.text) + '">' + s + '</span>';
+    }
     html += '</div>';
   }
 
@@ -642,7 +627,8 @@ function updateCV() {
 
   if (certs) {
     html += secTitle('Certifications', c, isDark);
-    certs.split('\n').filter(Boolean).forEach(cert => { html += '<div style="font-size:0.82rem;color:' + c.muted + ';margin-bottom:4px">✓ ' + cert + '</div>'; });
+    var certLines = certs.split('\n').filter(Boolean);
+    for (var i=0;i<certLines.length;i++) html += '<div style="font-size:0.82rem;color:' + c.muted + ';margin-bottom:4px">✓ ' + certLines[i] + '</div>';
   }
 
   html += '</div>';
@@ -651,226 +637,79 @@ function updateCV() {
 }
 
 function secTitle(t, c, isDark) {
-  const line = isDark ? 'height:1px;background:#222' : 'height:2px;background:' + c.accent;
+  var line = isDark ? 'height:1px;background:#222' : 'height:2px;background:' + c.accent;
   return '<div style="font-size:0.65rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:' + c.accent + ';margin:16px 0 8px">' + t + '</div><div style="' + line + ';margin-bottom:12px"></div>';
 }
 
 function downloadCV() {
-  const fn = document.getElementById('fn').value || 'resume';
-  const ln = document.getElementById('ln').value || '';
-  const cvContent = document.getElementById('cv-content').innerHTML;
-  const printWin = window.open('', '_blank');
-  const c = getColors();
-  const isDark = selectedTemplate === 'modern';
-  const textColor = isDark ? '#eee' : '#111';
-  const html = '<!DOCTYPE html><html><head><title>' + fn + ' ' + ln + ' — CV</title><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet"><style>html,body{margin:0;padding:0;background:' + c.bg + ' !important;min-height:100vh;}*{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}a{color:' + textColor + ' !important;text-decoration:none !important;}div{background:' + c.bg + ';}@media print{html,body{background:' + c.bg + ' !important;}@page{margin:0;size:A4;}}</style></head><body onload="window.print()" style="background:' + c.bg + ';min-height:297mm;">' + cvContent + '</body></html>';
+  var fn = document.getElementById('fn').value || 'resume';
+  var ln = document.getElementById('ln').value || '';
+  var cvContent = document.getElementById('cv-content').innerHTML;
+  var printWin = window.open('', '_blank');
+  var c = getColors();
+  var isDark = selectedTemplate === 'modern';
+  var textColor = isDark ? '#eee' : '#111';
+  var html = '<!DOCTYPE html><html><head><title>' + fn + ' ' + ln + ' - CV</title>'
+    + '<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">'
+    + '<style>html,body{margin:0;padding:0;background:' + c.bg + ' !important;min-height:100vh;}*{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}a{color:' + textColor + ' !important;text-decoration:none !important;}@media print{html,body{background:' + c.bg + ' !important;}@page{margin:0;size:A4;}}</style>'
+    + '</head><body onload="window.print()" style="background:' + c.bg + ';min-height:297mm;">' + cvContent + '</body></html>';
   printWin.document.write(html);
   printWin.document.close();
 }
 
-// AI Bullet Generator — calls backend securely
-async function generateBullets() {
-  const jobTitle = document.getElementById('bullet-jobtitle').value.trim();
-  if (!jobTitle) {
-    document.getElementById('bullet-results').innerHTML = '<div style="color:var(--red);font-size:0.82rem;padding:6px 0">Please enter a job title first.</div>';
-    return;
-  }
-  const btn = document.getElementById('bullet-btn');
-  btn.disabled = true; btn.textContent = '⏳ Generating...';
-  const resultsEl = document.getElementById('bullet-results');
-  resultsEl.innerHTML = '<div style="color:var(--text-muted);font-size:0.82rem;padding:8px 0">✨ Writing professional bullet points...</div>';
-
-  try {
-    const r = await fetch('/api/generate', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({
-        system: 'You are an expert CV writer. Generate exactly 5 professional, ATS-optimised CV bullet points. Each must start with a strong action verb, include a quantifiable result where possible, and be concise (max 15 words). Output ONLY the 5 bullet points, each on its own line starting with •. No intro text, no explanations.',
-        messages: [{role:'user', content:'Generate 5 strong CV bullet points for: ' + jobTitle}]
-      })
-    });
-
-    const rawText = await r.text();
-    let d;
-    try { d = JSON.parse(rawText); } catch(e) {
-      resultsEl.innerHTML = '<div style="color:var(--red);font-size:0.82rem;padding:6px 0">Server error — please try again.</div>';
-      btn.disabled = false; btn.textContent = 'Generate →';
-      return;
-    }
-
-    if (!r.ok || d.error) {
-      resultsEl.innerHTML = '<div style="color:var(--red);font-size:0.82rem;padding:6px 0">' + (typeof d.error === 'string' ? d.error : JSON.stringify(d.error)) + '</div>';
-      btn.disabled = false; btn.textContent = 'Generate →';
-      return;
-    }
-
-    const lines = d.content[0].text.split('\n').filter(l => l.trim());
-    resultsEl.innerHTML = lines.slice(0,5).map(b => {
-      const text = b.replace(/^[•\-\*]\s*/, '').trim();
-      return '<div class="ai-bullet-item" onclick="copyBullet(this,\'' + text.replace(/'/g,'&#39;') + '\')"><span class="ai-bullet-arrow">↓</span><span>' + text + '</span></div>';
-    }).join('');
-    document.getElementById('bullet-tip').style.display = 'block';
-  } catch(err) {
-    resultsEl.innerHTML = '<div style="color:var(--red);font-size:0.82rem;padding:6px 0">Connection error — ' + (err.message||'please try again.') + '</div>';
-  }
-  btn.disabled = false; btn.textContent = 'Generate →';
-}
-
-function copyBullet(el, text) {
-  navigator.clipboard.writeText('• ' + text).then(() => {
-    const span = el.querySelector('span:last-child');
-    const orig = span.textContent;
-    el.classList.add('copied');
-    span.textContent = '✓ Copied!';
-    setTimeout(() => { el.classList.remove('copied'); span.textContent = orig; }, 1800);
-  });
-}
-
-// ATS Score — calls backend securely
-async function runATSScore() {
-  const fn = (document.getElementById('fn').value||'').trim();
-  const title = (document.getElementById('title').value||'').trim();
-  const summary = (document.getElementById('summary').value||'').trim();
-  const skills = (document.getElementById('skills').value||'').trim();
-  const expText = Array.from(document.querySelectorAll('.exp-item')).map(e => {
-    const jt = e.querySelector('.exp-jobtitle')?.value||'';
-    const co = e.querySelector('.exp-company')?.value||'';
-    const de = e.querySelector('.exp-desc')?.value||'';
-    return jt + ' at ' + co + ': ' + de;
-  }).filter(x => x.trim() !== 'at: ').join(' | ');
-
-  if (!fn && !title && !expText) {
-    document.getElementById('ats-placeholder').style.display = 'flex';
-    document.getElementById('ats-placeholder').innerHTML = '<div class="ats-ph-icon">⚠️</div><div class="ats-ph-text">Please fill in your CV details first.</div>';
-    return;
-  }
-
-  const btn = document.getElementById('ats-btn');
-  btn.disabled = true; btn.textContent = '⏳ Analysing...';
-  document.getElementById('ats-placeholder').style.display = 'none';
-  document.getElementById('ats-score-content').style.display = 'none';
-
-  try {
-    const r = await fetch('/api/generate', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({
-        system: 'You are an ATS expert. Analyze the CV and return ONLY valid JSON, no extra text, no markdown:\n{"overall":75,"contact":80,"experience":70,"skills":65,"format":85,"keywords":60,"improvements":[{"type":"warn","text":"Add quantifiable achievements"},{"type":"bad","text":"Skills section needs keywords"},{"type":"good","text":"Clear contact info provided"},{"type":"warn","text":"Add a professional summary"}]}\nScores 0-100. Types: good/warn/bad. Give exactly 4 improvements.',
-        messages: [{role:'user', content:'Analyze this CV: Name:' + fn + ' Title:' + title + ' Summary:' + summary + ' Experience:' + expText + ' Skills:' + skills}]
-      })
-    });
-
-    const rawText = await r.text();
-    let d;
-    try { d = JSON.parse(rawText); } catch(e) {
-      throw new Error('Invalid server response');
-    }
-
-    if (!r.ok || d.error) {
-      throw new Error(typeof d.error === 'string' ? d.error : JSON.stringify(d.error));
-    }
-
-    let raw = d.content[0].text.trim().replace(/```json\n?/g,'').replace(/```\n?/g,'').trim();
-    const data = JSON.parse(raw);
-    renderScore(data);
-  } catch(err) {
-    document.getElementById('ats-placeholder').style.display = 'flex';
-    document.getElementById('ats-placeholder').innerHTML = '<div class="ats-ph-icon">⚠️</div><div class="ats-ph-text">Analysis failed — ' + (err.message||'please try again.') + '</div>';
-  }
-  btn.disabled = false; btn.textContent = '↻ Re-analyse';
-}
-
-function renderScore(data) {
-  document.getElementById('ats-score-content').style.display = 'block';
-  const score = Math.min(100, Math.max(0, data.overall||0));
-  const circumference = 251;
-  const color = score>=75?'#4ade80':score>=50?'#f5c842':'#f87171';
-  setTimeout(() => {
-    const arc = document.getElementById('score-arc');
-    arc.style.strokeDashoffset = circumference - (score/100)*circumference;
-    arc.style.stroke = color;
-  }, 80);
-  let cur = 0;
-  const t = setInterval(() => {
-    cur = Math.min(cur+2, score);
-    document.getElementById('score-number').textContent = cur;
-    document.getElementById('score-number').style.color = color;
-    if (cur >= score) clearInterval(t);
-  }, 18);
-  const label = score>=80?'🟢 Excellent — ATS Ready':score>=65?'🟡 Good — Minor Fixes Needed':score>=50?'🟠 Fair — Needs Improvement':'🔴 Poor — Major Issues';
-  document.getElementById('score-label').textContent = label;
-  const cats = [
-    {name:'Contact Info',val:data.contact||0},
-    {name:'Experience',val:data.experience||0},
-    {name:'Skills',val:data.skills||0},
-    {name:'Formatting',val:data.format||0},
-    {name:'Keywords',val:data.keywords||0}
-  ];
-  document.getElementById('score-bars').innerHTML = cats.map(c => {
-    const bc = c.val>=75?'#4ade80':c.val>=50?'#f5c842':'#f87171';
-    return '<div class="score-bar-item"><div class="score-bar-header"><span class="score-bar-name">' + c.name + '</span><span class="score-bar-val" style="color:' + bc + '">' + c.val + '</span></div><div class="score-bar-track"><div class="score-bar-fill" style="width:0%;background:' + bc + '" data-w="' + c.val + '%"></div></div></div>';
-  }).join('');
-  setTimeout(() => { document.querySelectorAll('.score-bar-fill').forEach(b => b.style.width = b.dataset.w); }, 100);
-  document.getElementById('feedback-list').innerHTML = (data.improvements||[]).map(i =>
-    '<div class="feedback-item ' + i.type + '">' + (i.type==='good'?'✓':i.type==='warn'?'⚡':'✗') + ' ' + i.text + '</div>'
-  ).join('');
-}
-
 function toggleImport() {
-  const area = document.getElementById('import-area');
-  const btn = document.getElementById('import-toggle-btn');
-  const isOpen = area.style.display !== 'none';
-  area.style.display = isOpen ? 'none' : 'block';
-  btn.textContent = isOpen ? 'Paste CV →' : 'Close ✕';
+  var area = document.getElementById('import-area');
+  var btn = document.getElementById('import-toggle-btn');
+  if (area.style.display === 'none') {
+    area.style.display = 'block';
+    btn.textContent = 'Close ✕';
+  } else {
+    area.style.display = 'none';
+    btn.textContent = 'Paste CV →';
+  }
 }
 
-async function importCV() {
-  const text = document.getElementById('import-text').value.trim();
-  if (!text) {
-    document.getElementById('import-status').textContent = 'Please paste your CV text first.';
-    return;
-  }
-
-  const btn = document.getElementById('import-btn');
-  const status = document.getElementById('import-status');
+function importCV() {
+  var text = document.getElementById('import-text').value.trim();
+  var status = document.getElementById('import-status');
+  if (!text) { status.textContent = 'Please paste your CV text first.'; return; }
+  var btn = document.getElementById('import-btn');
   btn.disabled = true;
-  btn.textContent = '⏳ Reading CV...';
+  btn.textContent = 'Reading CV...';
   status.textContent = '';
 
-  try {
-    const r = await fetch('/api/generate', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({
-        system: 'You are a CV parser. Extract information from the CV text and return ONLY valid JSON with no extra text or markdown. Use this exact structure:
-{"firstName":"","lastName":"","jobTitle":"","email":"","phone":"","location":"","linkedin":"","summary":"","experience":[{"jobTitle":"","company":"","start":"","end":"","description":""}],"education":[{"degree":"","school":"","start":"","end":""}],"skills":"","languages":"","certifications":""}
-For experience and education, include all entries found. For skills, join with commas. If a field is not found, use empty string.',
-        messages: [{role:'user', content: 'Parse this CV:
-
-' + text}]
-      })
-    });
-
-    const rawText = await r.text();
-    let d;
-    try { d = JSON.parse(rawText); } catch(e) {
-      status.textContent = '⚠️ Server error, please try again.';
+  fetch('/api/generate', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+      system: 'You are a CV parser. Extract information from the CV text and return ONLY valid JSON with no extra text or markdown. Use this exact structure: {"firstName":"","lastName":"","jobTitle":"","email":"","phone":"","location":"","linkedin":"","summary":"","experience":[{"jobTitle":"","company":"","start":"","end":"","description":""}],"education":[{"degree":"","school":"","start":"","end":""}],"skills":"","languages":"","certifications":""} For experience and education include all entries. For skills join with commas. If a field is not found use empty string.',
+      messages: [{role:'user', content: 'Parse this CV:\n\n' + text}]
+    })
+  })
+  .then(function(r) {
+    var ok = r.ok;
+    return r.text().then(function(t) { return {ok:ok, text:t}; });
+  })
+  .then(function(res) {
+    var d;
+    try { d = JSON.parse(res.text); } catch(e) {
+      status.textContent = 'Server error, please try again.';
+      btn.disabled = false; btn.textContent = '✦ Auto-fill Form';
+      return;
+    }
+    if (!res.ok || d.error) {
+      status.textContent = 'Error: ' + (typeof d.error === 'string' ? d.error : 'please try again.');
+      btn.disabled = false; btn.textContent = '✦ Auto-fill Form';
+      return;
+    }
+    var raw = d.content[0].text.trim().replace(/```json\n?/g,'').replace(/```\n?/g,'').trim();
+    var data;
+    try { data = JSON.parse(raw); } catch(e) {
+      status.textContent = 'Could not parse CV, please try again.';
       btn.disabled = false; btn.textContent = '✦ Auto-fill Form';
       return;
     }
 
-    if (!r.ok || d.error) {
-      status.textContent = '⚠️ ' + (typeof d.error === 'string' ? d.error : 'Error, please try again.');
-      btn.disabled = false; btn.textContent = '✦ Auto-fill Form';
-      return;
-    }
-
-    let raw = d.content[0].text.trim().replace(/```json
-?/g,'').replace(/```
-?/g,'').trim();
-    const data = JSON.parse(raw);
-
-    // Fill personal fields
     if (data.firstName) document.getElementById('fn').value = data.firstName;
     if (data.lastName) document.getElementById('ln').value = data.lastName;
     if (data.jobTitle) document.getElementById('title').value = data.jobTitle;
@@ -883,54 +722,196 @@ For experience and education, include all entries found. For skills, join with c
     if (data.languages) document.getElementById('languages').value = data.languages;
     if (data.certifications) document.getElementById('certs').value = data.certifications;
 
-    // Fill experience
     if (data.experience && data.experience.length > 0) {
-      const expList = document.getElementById('exp-list');
-      expList.innerHTML = '';
-      data.experience.forEach((exp, i) => {
+      document.getElementById('exp-list').innerHTML = '';
+      for (var i=0; i<data.experience.length; i++) {
         if (i > 0) addExp();
-        const items = expList.querySelectorAll('.exp-item');
-        const item = items[items.length - 1] || expList.querySelector('.exp-item');
-        if (!item) return;
+        var items = document.getElementById('exp-list').querySelectorAll('.exp-item');
+        var item = items[items.length-1];
+        if (!item) continue;
+        var exp = data.experience[i];
         if (exp.jobTitle) item.querySelector('.exp-jobtitle').value = exp.jobTitle;
         if (exp.company) item.querySelector('.exp-company').value = exp.company;
         if (exp.start) item.querySelector('.exp-start').value = exp.start;
         if (exp.end) item.querySelector('.exp-end').value = exp.end;
         if (exp.description) item.querySelector('.exp-desc').value = exp.description;
-      });
+      }
     }
 
-    // Fill education
     if (data.education && data.education.length > 0) {
-      const eduList = document.getElementById('edu-list');
-      eduList.innerHTML = '';
-      data.education.forEach((edu, i) => {
+      document.getElementById('edu-list').innerHTML = '';
+      for (var i=0; i<data.education.length; i++) {
         if (i > 0) addEdu();
-        const items = eduList.querySelectorAll('.edu-item');
-        const item = items[items.length - 1] || eduList.querySelector('.edu-item');
-        if (!item) return;
+        var items = document.getElementById('edu-list').querySelectorAll('.edu-item');
+        var item = items[items.length-1];
+        if (!item) continue;
+        var edu = data.education[i];
         if (edu.degree) item.querySelector('.edu-degree').value = edu.degree;
         if (edu.school) item.querySelector('.edu-school').value = edu.school;
         if (edu.start) item.querySelector('.edu-start').value = edu.start;
         if (edu.end) item.querySelector('.edu-end').value = edu.end;
-      });
+      }
     }
 
     updateCV();
-    status.textContent = '✓ Form filled successfully!';
     status.style.color = 'var(--green)';
-    setTimeout(() => {
+    status.textContent = '✓ Form filled successfully!';
+    setTimeout(function() {
       toggleImport();
-      document.getElementById('import-status').textContent = '';
-      document.getElementById('import-status').style.color = '';
+      status.textContent = '';
+      status.style.color = '';
     }, 1500);
+    btn.disabled = false;
+    btn.textContent = '✦ Auto-fill Form';
+  })
+  .catch(function(err) {
+    status.textContent = 'Connection error: ' + (err.message || 'please try again.');
+    btn.disabled = false;
+    btn.textContent = '✦ Auto-fill Form';
+  });
+}
 
-  } catch(err) {
-    status.textContent = '⚠️ Connection error — ' + (err.message||'please try again.');
+function generateBullets() {
+  var jobTitle = document.getElementById('bullet-jobtitle').value.trim();
+  if (!jobTitle) {
+    document.getElementById('bullet-results').innerHTML = '<div style="color:var(--red);font-size:0.82rem;padding:6px 0">Please enter a job title first.</div>';
+    return;
   }
+  var btn = document.getElementById('bullet-btn');
+  btn.disabled = true; btn.textContent = 'Generating...';
+  var resultsEl = document.getElementById('bullet-results');
+  resultsEl.innerHTML = '<div style="color:var(--text-muted);font-size:0.82rem;padding:8px 0">Writing bullet points...</div>';
 
-  btn.disabled = false;
-  btn.textContent = '✦ Auto-fill Form';
+  fetch('/api/generate', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+      system: 'You are an expert CV writer. Generate exactly 5 professional, ATS-optimised CV bullet points. Each must start with a strong action verb, include a quantifiable result where possible, and be concise (max 15 words). Output ONLY the 5 bullet points, each on its own line starting with a bullet character. No intro text, no explanations.',
+      messages: [{role:'user', content:'Generate 5 strong CV bullet points for: ' + jobTitle}]
+    })
+  })
+  .then(function(r) { return r.text().then(function(t) { return {ok:r.ok,text:t}; }); })
+  .then(function(res) {
+    var d;
+    try { d = JSON.parse(res.text); } catch(e) {
+      resultsEl.innerHTML = '<div style="color:var(--red);font-size:0.82rem;padding:6px 0">Server error, please try again.</div>';
+      btn.disabled = false; btn.textContent = 'Generate →';
+      return;
+    }
+    if (!res.ok || d.error) {
+      resultsEl.innerHTML = '<div style="color:var(--red);font-size:0.82rem;padding:6px 0">' + (typeof d.error === 'string' ? d.error : 'Error, please try again.') + '</div>';
+      btn.disabled = false; btn.textContent = 'Generate →';
+      return;
+    }
+    var lines = d.content[0].text.split('\n').filter(function(l) { return l.trim(); });
+    var html = '';
+    for (var i=0;i<Math.min(lines.length,5);i++) {
+      var text = lines[i].replace(/^[•\-\*\d\.]\s*/, '').trim();
+      html += '<div class="ai-bullet-item" onclick="copyBullet(this,\'' + text.replace(/\\/g,'\\\\').replace(/'/g,"\\'") + '\')"><span class="ai-bullet-arrow">↓</span><span>' + text + '</span></div>';
+    }
+    resultsEl.innerHTML = html;
+    document.getElementById('bullet-tip').style.display = 'block';
+    btn.disabled = false; btn.textContent = 'Generate →';
+  })
+  .catch(function(err) {
+    resultsEl.innerHTML = '<div style="color:var(--red);font-size:0.82rem;padding:6px 0">Connection error.</div>';
+    btn.disabled = false; btn.textContent = 'Generate →';
+  });
+}
+
+function copyBullet(el, text) {
+  navigator.clipboard.writeText('• ' + text).then(function() {
+    var span = el.querySelector('span:last-child');
+    var orig = span.textContent;
+    el.classList.add('copied');
+    span.textContent = '✓ Copied!';
+    setTimeout(function() { el.classList.remove('copied'); span.textContent = orig; }, 1800);
+  });
+}
+
+function runATSScore() {
+  var fn = (document.getElementById('fn').value||'').trim();
+  var titleV = (document.getElementById('title').value||'').trim();
+  var summary = (document.getElementById('summary').value||'').trim();
+  var skills = (document.getElementById('skills').value||'').trim();
+  var expParts = [];
+  document.querySelectorAll('.exp-item').forEach(function(e) {
+    var jt = e.querySelector('.exp-jobtitle') ? e.querySelector('.exp-jobtitle').value : '';
+    var co = e.querySelector('.exp-company') ? e.querySelector('.exp-company').value : '';
+    var de = e.querySelector('.exp-desc') ? e.querySelector('.exp-desc').value : '';
+    var s = jt + ' at ' + co + ': ' + de;
+    if (s.trim() !== 'at: ') expParts.push(s);
+  });
+  var expText = expParts.join(' | ');
+
+  if (!fn && !titleV && !expText) {
+    document.getElementById('ats-placeholder').style.display = 'flex';
+    document.getElementById('ats-placeholder').innerHTML = '<div class="ats-ph-icon">⚠️</div><div class="ats-ph-text">Please fill in your CV details first.</div>';
+    return;
+  }
+  var btn = document.getElementById('ats-btn');
+  btn.disabled = true; btn.textContent = 'Analysing...';
+  document.getElementById('ats-placeholder').style.display = 'none';
+  document.getElementById('ats-score-content').style.display = 'none';
+
+  fetch('/api/generate', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+      system: 'You are an ATS expert. Analyze the CV and return ONLY valid JSON, no extra text, no markdown: {"overall":75,"contact":80,"experience":70,"skills":65,"format":85,"keywords":60,"improvements":[{"type":"warn","text":"Add quantifiable achievements"},{"type":"bad","text":"Skills section needs keywords"},{"type":"good","text":"Clear contact info provided"},{"type":"warn","text":"Add a professional summary"}]} Scores 0-100. Types: good/warn/bad. Give exactly 4 improvements.',
+      messages: [{role:'user', content:'Analyze this CV: Name:' + fn + ' Title:' + titleV + ' Summary:' + summary + ' Experience:' + expText + ' Skills:' + skills}]
+    })
+  })
+  .then(function(r) { return r.text().then(function(t) { return {ok:r.ok,text:t}; }); })
+  .then(function(res) {
+    var d;
+    try { d = JSON.parse(res.text); } catch(e) { throw new Error('Invalid response'); }
+    if (!res.ok || d.error) throw new Error(typeof d.error === 'string' ? d.error : 'API error');
+    var raw = d.content[0].text.trim().replace(/```json\n?/g,'').replace(/```\n?/g,'').trim();
+    renderScore(JSON.parse(raw));
+    btn.disabled = false; btn.textContent = '↻ Re-analyse';
+  })
+  .catch(function(err) {
+    document.getElementById('ats-placeholder').style.display = 'flex';
+    document.getElementById('ats-placeholder').innerHTML = '<div class="ats-ph-icon">⚠️</div><div class="ats-ph-text">Analysis failed: ' + (err.message||'please try again.') + '</div>';
+    btn.disabled = false; btn.textContent = '✦ Analyse My CV';
+  });
+}
+
+function renderScore(data) {
+  document.getElementById('ats-score-content').style.display = 'block';
+  var score = Math.min(100, Math.max(0, data.overall||0));
+  var circumference = 251;
+  var color = score>=75?'#4ade80':score>=50?'#f5c842':'#f87171';
+  setTimeout(function() {
+    var arc = document.getElementById('score-arc');
+    arc.style.strokeDashoffset = circumference - (score/100)*circumference;
+    arc.style.stroke = color;
+  }, 80);
+  var cur = 0;
+  var t = setInterval(function() {
+    cur = Math.min(cur+2, score);
+    document.getElementById('score-number').textContent = cur;
+    document.getElementById('score-number').style.color = color;
+    if (cur >= score) clearInterval(t);
+  }, 18);
+  var label = score>=80?'🟢 Excellent — ATS Ready':score>=65?'🟡 Good — Minor Fixes Needed':score>=50?'🟠 Fair — Needs Improvement':'🔴 Poor — Major Issues';
+  document.getElementById('score-label').textContent = label;
+  var cats = [{name:'Contact Info',val:data.contact||0},{name:'Experience',val:data.experience||0},{name:'Skills',val:data.skills||0},{name:'Formatting',val:data.format||0},{name:'Keywords',val:data.keywords||0}];
+  var barsHtml = '';
+  for (var i=0;i<cats.length;i++) {
+    var bc = cats[i].val>=75?'#4ade80':cats[i].val>=50?'#f5c842':'#f87171';
+    barsHtml += '<div class="score-bar-item"><div class="score-bar-header"><span class="score-bar-name">' + cats[i].name + '</span><span class="score-bar-val" style="color:' + bc + '">' + cats[i].val + '</span></div><div class="score-bar-track"><div class="score-bar-fill" style="width:0%;background:' + bc + '" data-w="' + cats[i].val + '%"></div></div></div>';
+  }
+  document.getElementById('score-bars').innerHTML = barsHtml;
+  setTimeout(function() { document.querySelectorAll('.score-bar-fill').forEach(function(b) { b.style.width = b.dataset.w; }); }, 100);
+  var fbHtml = '';
+  var improvements = data.improvements || [];
+  for (var i=0;i<improvements.length;i++) {
+    var icon = improvements[i].type==='good'?'✓':improvements[i].type==='warn'?'⚡':'✗';
+    fbHtml += '<div class="feedback-item ' + improvements[i].type + '">' + icon + ' ' + improvements[i].text + '</div>';
+  }
+  document.getElementById('feedback-list').innerHTML = fbHtml;
 }
 </script>
 </body>
