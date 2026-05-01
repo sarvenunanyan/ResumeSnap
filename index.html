@@ -27,8 +27,6 @@
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;min-height:100vh;overflow-x:hidden;}
 .bg-noise{position:fixed;inset:0;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;pointer-events:none;z-index:0;}
 .bg-glow{position:fixed;top:0;left:50%;transform:translateX(-50%);width:800px;height:300px;background:radial-gradient(ellipse,rgba(245,200,66,0.07) 0%,transparent 65%);pointer-events:none;z-index:0;}
-
-/* Header */
 header{position:relative;z-index:10;padding:0 48px;height:68px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:rgba(12,12,14,0.94);backdrop-filter:blur(20px);}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
 .logo-mark{width:32px;height:32px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;}
@@ -39,8 +37,6 @@ nav{display:flex;align-items:center;gap:4px;}
 .nav-link:hover{color:var(--text);background:var(--card);}
 .nav-cta{background:var(--gold);color:var(--bg);font-weight:600;font-size:0.82rem;padding:8px 18px;border-radius:8px;text-decoration:none;margin-left:8px;transition:all 0.2s;}
 .nav-cta:hover{background:var(--gold-light);}
-
-/* Hero */
 .hero{position:relative;z-index:1;padding:80px 48px 64px;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.1fr 0.9fr;gap:80px;align-items:start;}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
 .hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);}
@@ -55,8 +51,6 @@ nav{display:flex;align-items:center;gap:4px;}
 .hero-trust{display:flex;gap:24px;flex-wrap:wrap;}
 .trust-item{display:flex;align-items:center;gap:8px;font-size:0.8rem;color:var(--text-muted);}
 .trust-item span{color:var(--green);}
-
-/* CV Preview */
 .preview-wrapper{position:sticky;top:24px;}
 .preview-label{font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
 .preview-label::before{content:'';width:6px;height:6px;background:var(--green);border-radius:50%;box-shadow:0 0 8px var(--green);animation:pulse 2s infinite;}
@@ -78,8 +72,6 @@ nav{display:flex;align-items:center;gap:4px;}
 .cv-item-bullets li{font-size:0.7rem;color:#666;line-height:1.5;list-style:disc;}
 .cv-skill-grid{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;}
 .cv-skill{background:#f5f5f5;padding:2px 8px;border-radius:3px;font-size:0.65rem;color:#444;}
-
-/* Templates */
 .template-section{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:0 48px 80px;}
 .section-eyebrow{font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
 .section-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);}
@@ -95,8 +87,6 @@ nav{display:flex;align-items:center;gap:4px;}
 .template-info{padding:16px;}
 .template-name{font-weight:600;font-size:0.9rem;margin-bottom:4px;}
 .template-desc{font-size:0.78rem;color:var(--text-muted);line-height:1.5;}
-
-/* Builder */
 .builder-section{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:0 48px 80px;}
 .builder-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;}
 .builder-form{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
@@ -116,8 +106,6 @@ textarea.form-input{resize:vertical;min-height:80px;line-height:1.6;}
 .add-btn:hover{border-color:var(--gold-dim);color:var(--gold);}
 .download-btn{width:100%;background:var(--gold);color:var(--bg);border:none;padding:14px;font-family:'DM Sans',sans-serif;font-size:0.95rem;font-weight:600;cursor:pointer;border-radius:10px;margin-top:20px;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:8px;}
 .download-btn:hover{background:var(--gold-light);transform:translateY(-1px);}
-
-/* AI Bullet Generator */
 .ai-bullet-wrap{background:rgba(245,200,66,0.04);border:1px solid var(--gold-dim);border-radius:12px;padding:16px;margin-top:14px;}
 .ai-bullet-head{font-size:0.69rem;font-weight:600;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:6px;}
 .ai-bullet-row{display:flex;gap:8px;}
@@ -132,12 +120,8 @@ textarea.form-input{resize:vertical;min-height:80px;line-height:1.6;}
 .ai-bullet-item.copied{border-color:var(--green);color:var(--green);}
 .ai-bullet-arrow{color:var(--gold);flex-shrink:0;font-size:0.72rem;margin-top:2px;}
 .ai-bullet-tip{font-size:0.71rem;color:var(--text-muted);margin-top:6px;}
-
-/* Live CV */
 .cv-live{background:white;border-radius:12px;box-shadow:0 24px 60px rgba(0,0,0,0.5);overflow:hidden;min-height:400px;}
 .cv-live-inner{padding:32px 28px;font-family:'DM Sans',sans-serif;color:#111;}
-
-/* ATS Section */
 .ats-section{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:0 48px 80px;}
 .ats-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
 .ats-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
@@ -155,8 +139,6 @@ textarea.form-input{resize:vertical;min-height:80px;line-height:1.6;}
 .ats-placeholder{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;}
 .ats-ph-icon{font-size:2.4rem;opacity:0.35;}
 .ats-ph-text{font-size:0.84rem;color:var(--text-muted);line-height:1.6;}
-
-/* Score */
 .score-top{display:flex;align-items:center;gap:18px;margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--border);}
 .score-circle{position:relative;width:96px;height:96px;flex-shrink:0;}
 .score-circle svg{transform:rotate(-90deg);}
@@ -176,8 +158,6 @@ textarea.form-input{resize:vertical;min-height:80px;line-height:1.6;}
 .feedback-item.good{color:var(--green);}
 .feedback-item.warn{color:var(--gold);}
 .feedback-item.bad{color:var(--red);}
-
-/* Features */
 .features-section{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:0 48px 80px;}
 .features-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
 .feature-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;transition:border-color 0.2s;}
@@ -185,16 +165,13 @@ textarea.form-input{resize:vertical;min-height:80px;line-height:1.6;}
 .feature-icon{font-size:1.6rem;margin-bottom:14px;}
 .feature-title{font-weight:600;font-size:0.9rem;margin-bottom:8px;}
 .feature-desc{font-size:0.8rem;color:var(--text-muted);line-height:1.7;}
-
 footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:28px 48px;display:flex;justify-content:space-between;align-items:center;}
 footer p{font-size:0.75rem;color:var(--text-dim);}
 footer a{color:var(--text-muted);text-decoration:none;font-size:0.75rem;}
 footer a:hover{color:var(--gold);}
-
 .hero-left{animation:fadeUp 0.6s ease forwards;}
 .preview-wrapper{animation:fadeUp 0.6s ease 0.15s both;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-
 @media(max-width:1024px){
   .hero{grid-template-columns:1fr;gap:40px;padding:48px 24px 32px;}
   .preview-wrapper{position:static;}
@@ -208,7 +185,6 @@ footer a:hover{color:var(--gold);}
   .templates-grid{grid-template-columns:1fr;}
   .features-grid{grid-template-columns:1fr;}
   nav{display:none;}
-  .feature-strip-grid{grid-template-columns:1fr !important;}
 }
 </style>
 </head>
@@ -230,7 +206,6 @@ footer a:hover{color:var(--gold);}
   </nav>
 </header>
 
-<!-- Hero -->
 <div class="hero">
   <div class="hero-left">
     <div class="hero-eyebrow">Free · AI-Powered · ATS-Optimised</div>
@@ -254,9 +229,7 @@ footer a:hover{color:var(--gold);}
         <div class="cv-header">
           <div class="cv-name">Alexandra Chen</div>
           <div class="cv-role">Senior Product Designer · UX Lead</div>
-          <div class="cv-contact">
-            <span>alex@email.com</span><span>+44 7700 900000</span><span>London, UK</span>
-          </div>
+          <div class="cv-contact"><span>alex@email.com</span><span>+44 7700 900000</span><span>London, UK</span></div>
         </div>
         <div class="cv-section-title">Experience</div>
         <div class="cv-item">
@@ -278,29 +251,21 @@ footer a:hover{color:var(--gold);}
   </div>
 </div>
 
-<!-- Feature Strip -->
 <div style="position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:0 48px 60px;">
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-    <a href="#ats" style="text-decoration:none;background:linear-gradient(135deg,rgba(245,200,66,0.08),rgba(245,200,66,0.03));border:1px solid var(--gold-dim);border-radius:16px;padding:24px 28px;display:flex;align-items:center;gap:18px;transition:all 0.2s;cursor:pointer;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--gold-dim)'">
+    <a href="#ats" style="text-decoration:none;background:linear-gradient(135deg,rgba(245,200,66,0.08),rgba(245,200,66,0.03));border:1px solid var(--gold-dim);border-radius:16px;padding:24px 28px;display:flex;align-items:center;gap:18px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--gold-dim)'">
       <div style="width:48px;height:48px;background:var(--gold);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;">📊</div>
-      <div>
-        <div style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--text);margin-bottom:4px;">ATS Score Checker</div>
-        <div style="font-size:0.8rem;color:var(--text-muted);line-height:1.5;">Get a real score out of 100. See exactly what's stopping your CV from passing ATS filters.</div>
-      </div>
+      <div><div style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--text);margin-bottom:4px;">ATS Score Checker</div><div style="font-size:0.8rem;color:var(--text-muted);line-height:1.5;">Get a real score out of 100. See exactly what's stopping your CV from passing ATS filters.</div></div>
       <div style="margin-left:auto;color:var(--gold);font-size:1.2rem;flex-shrink:0;">→</div>
     </a>
-    <a href="#builder" onclick="setTimeout(()=>{document.querySelectorAll('.form-tab')[1].click()},100)" style="text-decoration:none;background:linear-gradient(135deg,rgba(245,200,66,0.08),rgba(245,200,66,0.03));border:1px solid var(--gold-dim);border-radius:16px;padding:24px 28px;display:flex;align-items:center;gap:18px;transition:all 0.2s;cursor:pointer;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--gold-dim)'">
+    <a href="#builder" onclick="setTimeout(()=>{document.querySelectorAll('.form-tab')[1].click()},100)" style="text-decoration:none;background:linear-gradient(135deg,rgba(245,200,66,0.08),rgba(245,200,66,0.03));border:1px solid var(--gold-dim);border-radius:16px;padding:24px 28px;display:flex;align-items:center;gap:18px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--gold-dim)'">
       <div style="width:48px;height:48px;background:var(--gold);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;">✦</div>
-      <div>
-        <div style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--text);margin-bottom:4px;">AI Bullet Generator</div>
-        <div style="font-size:0.8rem;color:var(--text-muted);line-height:1.5;">Generate 5 professional, keyword-rich bullet points for any job title with one click.</div>
-      </div>
+      <div><div style="font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--text);margin-bottom:4px;">AI Bullet Generator</div><div style="font-size:0.8rem;color:var(--text-muted);line-height:1.5;">Generate 5 professional, keyword-rich bullet points for any job title with one click.</div></div>
       <div style="margin-left:auto;color:var(--gold);font-size:1.2rem;flex-shrink:0;">→</div>
     </a>
   </div>
 </div>
 
-<!-- Templates -->
 <div class="template-section" id="templates">
   <div class="section-eyebrow">Professional Templates</div>
   <div class="section-title">Choose Your Style</div>
@@ -339,7 +304,6 @@ footer a:hover{color:var(--gold);}
   </div>
 </div>
 
-<!-- Builder -->
 <div class="builder-section" id="builder">
   <div class="section-eyebrow">Live CV Builder</div>
   <div class="section-title">Fill In. Preview. Download.</div>
@@ -352,8 +316,6 @@ footer a:hover{color:var(--gold);}
         <button class="form-tab" onclick="switchTab('education',this)">Education</button>
         <button class="form-tab" onclick="switchTab('skills',this)">Skills</button>
       </div>
-
-      <!-- Personal -->
       <div class="form-panel active" id="tab-personal">
         <div class="form-field-row">
           <div class="form-field"><label class="form-label">First Name</label><input class="form-input" id="fn" placeholder="Alexandra" oninput="updateCV()"></div>
@@ -368,8 +330,6 @@ footer a:hover{color:var(--gold);}
         <div class="form-field"><label class="form-label">LinkedIn / Website</label><input class="form-input" id="linkedin" placeholder="linkedin.com/in/yourname" oninput="updateCV()"></div>
         <div class="form-field"><label class="form-label">Professional Summary</label><textarea class="form-input" id="summary" placeholder="Brief professional summary..." oninput="updateCV()"></textarea></div>
       </div>
-
-      <!-- Experience -->
       <div class="form-panel" id="tab-experience">
         <div id="exp-list">
           <div class="exp-item" style="border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:12px">
@@ -383,8 +343,6 @@ footer a:hover{color:var(--gold);}
           </div>
         </div>
         <button class="add-btn" onclick="addExp()">+ Add Another Position</button>
-
-        <!-- AI Bullet Generator -->
         <div class="ai-bullet-wrap">
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
             <div class="ai-bullet-head" style="margin-bottom:0">✦ AI Bullet Point Generator</div>
@@ -399,8 +357,6 @@ footer a:hover{color:var(--gold);}
           <p class="ai-bullet-tip" id="bullet-tip" style="display:none">💡 Click any bullet to copy, then paste into description above</p>
         </div>
       </div>
-
-      <!-- Education -->
       <div class="form-panel" id="tab-education">
         <div id="edu-list">
           <div class="edu-item" style="border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:12px">
@@ -414,20 +370,16 @@ footer a:hover{color:var(--gold);}
         </div>
         <button class="add-btn" onclick="addEdu()">+ Add Another Qualification</button>
       </div>
-
-      <!-- Skills -->
       <div class="form-panel" id="tab-skills">
         <div class="form-field"><label class="form-label">Skills (comma separated)</label><textarea class="form-input" id="skills" placeholder="Figma, Sketch, User Research, Prototyping, Design Systems" rows="3" oninput="updateCV()"></textarea></div>
         <div class="form-field"><label class="form-label">Languages</label><input class="form-input" id="languages" placeholder="English (Native), Spanish (Intermediate)" oninput="updateCV()"></div>
         <div class="form-field"><label class="form-label">Certifications (optional)</label><textarea class="form-input" id="certs" placeholder="Google UX Design Certificate, 2023" rows="3" oninput="updateCV()"></textarea></div>
       </div>
-
       <div style="padding:0 24px 24px">
         <button class="download-btn" onclick="downloadCV()">⬇ Download as PDF — Free</button>
+        <p style="font-size:0.72rem;color:var(--text-muted);margin-top:8px;text-align:center;">💡 Tip: In print dialog, turn off "Headers and footers" for a clean PDF</p>
       </div>
     </div>
-
-    <!-- Live CV Preview -->
     <div>
       <div class="preview-label" style="color:var(--text-muted)">Live Preview</div>
       <div class="cv-live" id="cv-output">
@@ -442,7 +394,6 @@ footer a:hover{color:var(--gold);}
   </div>
 </div>
 
-<!-- ATS Score -->
 <div class="ats-section" id="ats">
   <div class="ats-card">
     <div>
@@ -487,7 +438,6 @@ footer a:hover{color:var(--gold);}
   </div>
 </div>
 
-<!-- Features -->
 <div class="features-section">
   <div class="features-grid">
     <div class="feature-card"><div class="feature-icon">🤖</div><div class="feature-title">ATS-Optimised</div><div class="feature-desc">All templates pass Applicant Tracking Systems used by top employers like Google, Amazon, and KPMG.</div></div>
@@ -585,8 +535,7 @@ function updateCV() {
   if (expData.length) {
     html += secTitle('Experience', c, isDark);
     expData.forEach(e => {
-      html += '<div style="margin-bottom:14px">';
-      html += '<div style="display:flex;justify-content:space-between;align-items:baseline">';
+      html += '<div style="margin-bottom:14px"><div style="display:flex;justify-content:space-between;align-items:baseline">';
       html += '<div style="font-size:0.85rem;font-weight:600;color:' + c.text + '">' + (e.jt||'') + '</div>';
       if (e.st||e.en) html += '<div style="font-size:0.72rem;color:' + c.muted + '">' + (e.st||'') + (e.en?' – '+e.en:'') + '</div>';
       html += '</div>';
@@ -654,39 +603,55 @@ function downloadCV() {
   const ln = document.getElementById('ln').value || '';
   const cvContent = document.getElementById('cv-content').innerHTML;
   const printWin = window.open('', '_blank');
-  const html = '<!DOCTYPE html><html><head><title>' + fn + ' ' + ln + ' — CV</title><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"><style>body{margin:0;padding:0}@media print{@page{margin:0}}</style></head><body onload="window.print()">' + cvContent + '</body></html>';
+  const html = '<!DOCTYPE html><html><head><title>' + fn + ' ' + ln + ' — CV</title><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"><style>body{margin:0;padding:0;}a{color:#111 !important;text-decoration:none !important;}*{color:#111 !important;}@media print{@page{margin:0}}</style></head><body onload="window.print()">' + cvContent + '</body></html>';
   printWin.document.write(html);
   printWin.document.close();
 }
 
-// AI Bullet Generator
+// AI Bullet Generator — calls backend securely
 async function generateBullets() {
   const jobTitle = document.getElementById('bullet-jobtitle').value.trim();
-  if (!jobTitle) { alert('Please enter a job title first.'); return; }
+  if (!jobTitle) {
+    document.getElementById('bullet-results').innerHTML = '<div style="color:var(--red);font-size:0.82rem;padding:6px 0">Please enter a job title first.</div>';
+    return;
+  }
   const btn = document.getElementById('bullet-btn');
   btn.disabled = true; btn.textContent = '⏳ Generating...';
   const resultsEl = document.getElementById('bullet-results');
   resultsEl.innerHTML = '<div style="color:var(--text-muted);font-size:0.82rem;padding:8px 0">✨ Writing professional bullet points...</div>';
+
   try {
-    const r = await fetch('https://api.anthropic.com/v1/messages', {
+    const r = await fetch('/api/generate', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 600,
         system: 'You are an expert CV writer. Generate exactly 5 professional, ATS-optimised CV bullet points. Each must start with a strong action verb, include a quantifiable result where possible, and be concise (max 15 words). Output ONLY the 5 bullet points, each on its own line starting with •. No intro text, no explanations.',
         messages: [{role:'user', content:'Generate 5 strong CV bullet points for: ' + jobTitle}]
       })
     });
-    const d = await r.json();
+
+    const rawText = await r.text();
+    let d;
+    try { d = JSON.parse(rawText); } catch(e) {
+      resultsEl.innerHTML = '<div style="color:var(--red);font-size:0.82rem;padding:6px 0">Server error — please try again.</div>';
+      btn.disabled = false; btn.textContent = 'Generate →';
+      return;
+    }
+
+    if (!r.ok || d.error) {
+      resultsEl.innerHTML = '<div style="color:var(--red);font-size:0.82rem;padding:6px 0">' + (typeof d.error === 'string' ? d.error : JSON.stringify(d.error)) + '</div>';
+      btn.disabled = false; btn.textContent = 'Generate →';
+      return;
+    }
+
     const lines = d.content[0].text.split('\n').filter(l => l.trim());
     resultsEl.innerHTML = lines.slice(0,5).map(b => {
       const text = b.replace(/^[•\-\*]\s*/, '').trim();
       return '<div class="ai-bullet-item" onclick="copyBullet(this,\'' + text.replace(/'/g,'&#39;') + '\')"><span class="ai-bullet-arrow">↓</span><span>' + text + '</span></div>';
     }).join('');
     document.getElementById('bullet-tip').style.display = 'block';
-  } catch(e) {
-    resultsEl.innerHTML = '<div style="color:var(--red);font-size:0.82rem;padding:6px 0">Connection error — please try again.</div>';
+  } catch(err) {
+    resultsEl.innerHTML = '<div style="color:var(--red);font-size:0.82rem;padding:6px 0">Connection error — ' + (err.message||'please try again.') + '</div>';
   }
   btn.disabled = false; btn.textContent = 'Generate →';
 }
@@ -701,7 +666,7 @@ function copyBullet(el, text) {
   });
 }
 
-// ATS Score
+// ATS Score — calls backend securely
 async function runATSScore() {
   const fn = (document.getElementById('fn').value||'').trim();
   const title = (document.getElementById('title').value||'').trim();
@@ -715,7 +680,8 @@ async function runATSScore() {
   }).filter(x => x.trim() !== 'at: ').join(' | ');
 
   if (!fn && !title && !expText) {
-    alert('Please fill in your CV details first (at minimum: name, job title, and one experience entry).');
+    document.getElementById('ats-placeholder').style.display = 'flex';
+    document.getElementById('ats-placeholder').innerHTML = '<div class="ats-ph-icon">⚠️</div><div class="ats-ph-text">Please fill in your CV details first.</div>';
     return;
   }
 
@@ -725,23 +691,31 @@ async function runATSScore() {
   document.getElementById('ats-score-content').style.display = 'none';
 
   try {
-    const r = await fetch('https://api.anthropic.com/v1/messages', {
+    const r = await fetch('/api/generate', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 600,
         system: 'You are an ATS expert. Analyze the CV and return ONLY valid JSON, no extra text, no markdown:\n{"overall":75,"contact":80,"experience":70,"skills":65,"format":85,"keywords":60,"improvements":[{"type":"warn","text":"Add quantifiable achievements"},{"type":"bad","text":"Skills section needs keywords"},{"type":"good","text":"Clear contact info provided"},{"type":"warn","text":"Add a professional summary"}]}\nScores 0-100. Types: good/warn/bad. Give exactly 4 improvements.',
         messages: [{role:'user', content:'Analyze this CV: Name:' + fn + ' Title:' + title + ' Summary:' + summary + ' Experience:' + expText + ' Skills:' + skills}]
       })
     });
-    const d = await r.json();
+
+    const rawText = await r.text();
+    let d;
+    try { d = JSON.parse(rawText); } catch(e) {
+      throw new Error('Invalid server response');
+    }
+
+    if (!r.ok || d.error) {
+      throw new Error(typeof d.error === 'string' ? d.error : JSON.stringify(d.error));
+    }
+
     let raw = d.content[0].text.trim().replace(/```json\n?/g,'').replace(/```\n?/g,'').trim();
     const data = JSON.parse(raw);
     renderScore(data);
-  } catch(e) {
+  } catch(err) {
     document.getElementById('ats-placeholder').style.display = 'flex';
-    document.getElementById('ats-placeholder').innerHTML = '<div class="ats-ph-icon">⚠️</div><div class="ats-ph-text">Analysis failed — please try again.</div>';
+    document.getElementById('ats-placeholder').innerHTML = '<div class="ats-ph-icon">⚠️</div><div class="ats-ph-text">Analysis failed — ' + (err.message||'please try again.') + '</div>';
   }
   btn.disabled = false; btn.textContent = '↻ Re-analyse';
 }
