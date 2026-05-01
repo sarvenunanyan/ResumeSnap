@@ -83,7 +83,7 @@ nav{display:flex;align-items:center;gap:4px;}
 .template-card.selected{border-color:var(--gold);}
 .template-badge{position:absolute;top:12px;right:12px;background:var(--gold);color:var(--bg);font-size:0.65rem;font-weight:600;padding:3px 10px;border-radius:100px;}
 .template-preview{background:white;padding:20px 16px;height:180px;overflow:hidden;position:relative;}
-.template-preview::after{content:'';position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,white);}
+
 .template-info{padding:16px;}
 .template-name{font-weight:600;font-size:0.9rem;margin-bottom:4px;}
 .template-desc{font-size:0.78rem;color:var(--text-muted);line-height:1.5;}
@@ -603,7 +603,10 @@ function downloadCV() {
   const ln = document.getElementById('ln').value || '';
   const cvContent = document.getElementById('cv-content').innerHTML;
   const printWin = window.open('', '_blank');
-  const html = '<!DOCTYPE html><html><head><title>' + fn + ' ' + ln + ' — CV</title><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"><style>body{margin:0;padding:0;}a{color:#111 !important;text-decoration:none !important;}*{color:#111 !important;}@media print{@page{margin:0}}</style></head><body onload="window.print()">' + cvContent + '</body></html>';
+  const c = getColors();
+  const isDark = selectedTemplate === 'modern';
+  const textColor = isDark ? '#eee' : '#111';
+  const html = '<!DOCTYPE html><html><head><title>' + fn + ' ' + ln + ' — CV</title><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"><style>body{margin:0;padding:0;background:' + c.bg + ';}a{color:' + textColor + ' !important;text-decoration:none !important;}@media print{@page{margin:0}body{background:' + c.bg + ' !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}}</style></head><body onload="window.print()">' + cvContent + '</body></html>';
   printWin.document.write(html);
   printWin.document.close();
 }
