@@ -532,7 +532,7 @@ function updateCV() {
   const c = getColors();
   const isDark = selectedTemplate === 'modern';
 
-  let html = '<div style="background:' + c.bg + ';padding:32px 28px;font-family:\'DM Sans\',sans-serif;color:' + c.text + '">';
+  let html = '<div style="background:' + c.bg + ';padding:32px 28px;font-family:\'' + selectedFont + '\',serif;color:' + c.text + '">';
   html += '<div style="border-bottom:' + c.border + ';padding-bottom:16px;margin-bottom:20px">';
   html += '<div style="font-family:\'' + selectedFont + '\',serif;font-size:1.8rem;color:' + c.text + ';letter-spacing:-0.02em">' + fn + ' ' + ln + '</div>';
   html += '<div style="font-size:0.85rem;color:' + c.muted + ';margin-top:4px">' + title + '</div>';
