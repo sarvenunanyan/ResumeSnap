@@ -319,7 +319,27 @@ footer a:hover{color:var(--gold);}
 <div class="builder-section" id="builder">
   <div class="section-eyebrow">Live CV Builder</div>
   <div class="section-title">Fill In. Preview. Download.</div>
-  <p class="section-sub" style="margin-bottom:28px">Your CV updates in real time as you type.</p>
+  <p class="section-sub" style="margin-bottom:20px">Your CV updates in real time as you type.</p>
+
+  <!-- Import CV -->
+  <div style="background:rgba(245,200,66,0.04);border:1px solid var(--gold-dim);border-radius:14px;padding:20px 24px;margin-bottom:28px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+      <div>
+        <div style="font-size:0.75rem;font-weight:600;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;">✦ Import Existing CV</div>
+        <div style="font-size:0.8rem;color:var(--text-muted);">Paste your current CV text — AI will fill the form automatically.</div>
+      </div>
+      <button onclick="toggleImport()" id="import-toggle-btn" style="background:var(--gold);color:var(--bg);border:none;padding:8px 18px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;white-space:nowrap;margin-left:16px;">Paste CV →</button>
+    </div>
+    <div id="import-area" style="display:none;margin-top:12px;">
+      <textarea id="import-text" style="width:100%;background:var(--card);border:1px solid var(--border);color:var(--text);padding:12px 14px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.85rem;outline:none;resize:vertical;min-height:120px;line-height:1.6;" placeholder="Paste your CV text here... e.g.:&#10;John Smith&#10;Senior Designer at Spotify, 2020-Present&#10;Led redesign of core product...&#10;BA Graphic Design, Central Saint Martins 2018&#10;Skills: Figma, Sketch, User Research"></textarea>
+      <div style="display:flex;gap:10px;margin-top:10px;align-items:center;">
+        <button onclick="importCV()" id="import-btn" style="background:var(--gold);color:var(--bg);border:none;padding:10px 22px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:600;cursor:pointer;transition:all 0.2s;">✦ Auto-fill Form</button>
+        <button onclick="toggleImport()" style="background:transparent;color:var(--text-muted);border:1px solid var(--border);padding:10px 16px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.82rem;cursor:pointer;">Cancel</button>
+        <span id="import-status" style="font-size:0.78rem;color:var(--text-muted);"></span>
+      </div>
+    </div>
+  </div>
+
   <div class="builder-grid">
     <div class="builder-form">
       <div class="form-tabs">
@@ -794,6 +814,123 @@ function renderScore(data) {
   document.getElementById('feedback-list').innerHTML = (data.improvements||[]).map(i =>
     '<div class="feedback-item ' + i.type + '">' + (i.type==='good'?'✓':i.type==='warn'?'⚡':'✗') + ' ' + i.text + '</div>'
   ).join('');
+}
+
+function toggleImport() {
+  const area = document.getElementById('import-area');
+  const btn = document.getElementById('import-toggle-btn');
+  const isOpen = area.style.display !== 'none';
+  area.style.display = isOpen ? 'none' : 'block';
+  btn.textContent = isOpen ? 'Paste CV →' : 'Close ✕';
+}
+
+async function importCV() {
+  const text = document.getElementById('import-text').value.trim();
+  if (!text) {
+    document.getElementById('import-status').textContent = 'Please paste your CV text first.';
+    return;
+  }
+
+  const btn = document.getElementById('import-btn');
+  const status = document.getElementById('import-status');
+  btn.disabled = true;
+  btn.textContent = '⏳ Reading CV...';
+  status.textContent = '';
+
+  try {
+    const r = await fetch('/api/generate', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        system: 'You are a CV parser. Extract information from the CV text and return ONLY valid JSON with no extra text or markdown. Use this exact structure:
+{"firstName":"","lastName":"","jobTitle":"","email":"","phone":"","location":"","linkedin":"","summary":"","experience":[{"jobTitle":"","company":"","start":"","end":"","description":""}],"education":[{"degree":"","school":"","start":"","end":""}],"skills":"","languages":"","certifications":""}
+For experience and education, include all entries found. For skills, join with commas. If a field is not found, use empty string.',
+        messages: [{role:'user', content: 'Parse this CV:
+
+' + text}]
+      })
+    });
+
+    const rawText = await r.text();
+    let d;
+    try { d = JSON.parse(rawText); } catch(e) {
+      status.textContent = '⚠️ Server error, please try again.';
+      btn.disabled = false; btn.textContent = '✦ Auto-fill Form';
+      return;
+    }
+
+    if (!r.ok || d.error) {
+      status.textContent = '⚠️ ' + (typeof d.error === 'string' ? d.error : 'Error, please try again.');
+      btn.disabled = false; btn.textContent = '✦ Auto-fill Form';
+      return;
+    }
+
+    let raw = d.content[0].text.trim().replace(/```json
+?/g,'').replace(/```
+?/g,'').trim();
+    const data = JSON.parse(raw);
+
+    // Fill personal fields
+    if (data.firstName) document.getElementById('fn').value = data.firstName;
+    if (data.lastName) document.getElementById('ln').value = data.lastName;
+    if (data.jobTitle) document.getElementById('title').value = data.jobTitle;
+    if (data.email) document.getElementById('email').value = data.email;
+    if (data.phone) document.getElementById('phone').value = data.phone;
+    if (data.location) document.getElementById('location').value = data.location;
+    if (data.linkedin) document.getElementById('linkedin').value = data.linkedin;
+    if (data.summary) document.getElementById('summary').value = data.summary;
+    if (data.skills) document.getElementById('skills').value = data.skills;
+    if (data.languages) document.getElementById('languages').value = data.languages;
+    if (data.certifications) document.getElementById('certs').value = data.certifications;
+
+    // Fill experience
+    if (data.experience && data.experience.length > 0) {
+      const expList = document.getElementById('exp-list');
+      expList.innerHTML = '';
+      data.experience.forEach((exp, i) => {
+        if (i > 0) addExp();
+        const items = expList.querySelectorAll('.exp-item');
+        const item = items[items.length - 1] || expList.querySelector('.exp-item');
+        if (!item) return;
+        if (exp.jobTitle) item.querySelector('.exp-jobtitle').value = exp.jobTitle;
+        if (exp.company) item.querySelector('.exp-company').value = exp.company;
+        if (exp.start) item.querySelector('.exp-start').value = exp.start;
+        if (exp.end) item.querySelector('.exp-end').value = exp.end;
+        if (exp.description) item.querySelector('.exp-desc').value = exp.description;
+      });
+    }
+
+    // Fill education
+    if (data.education && data.education.length > 0) {
+      const eduList = document.getElementById('edu-list');
+      eduList.innerHTML = '';
+      data.education.forEach((edu, i) => {
+        if (i > 0) addEdu();
+        const items = eduList.querySelectorAll('.edu-item');
+        const item = items[items.length - 1] || eduList.querySelector('.edu-item');
+        if (!item) return;
+        if (edu.degree) item.querySelector('.edu-degree').value = edu.degree;
+        if (edu.school) item.querySelector('.edu-school').value = edu.school;
+        if (edu.start) item.querySelector('.edu-start').value = edu.start;
+        if (edu.end) item.querySelector('.edu-end').value = edu.end;
+      });
+    }
+
+    updateCV();
+    status.textContent = '✓ Form filled successfully!';
+    status.style.color = 'var(--green)';
+    setTimeout(() => {
+      toggleImport();
+      document.getElementById('import-status').textContent = '';
+      document.getElementById('import-status').style.color = '';
+    }, 1500);
+
+  } catch(err) {
+    status.textContent = '⚠️ Connection error — ' + (err.message||'please try again.');
+  }
+
+  btn.disabled = false;
+  btn.textContent = '✦ Auto-fill Form';
 }
 </script>
 </body>
