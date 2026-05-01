@@ -471,6 +471,7 @@ footer a:hover{color:var(--gold);}
 <script>
 let selectedTemplate = 'classic';
 let selectedFont = 'DM Serif Display';
+let selectedFontStack = "'DM Serif Display',serif";
 
 function selectTemplate(t, card) {
   selectedTemplate = t;
@@ -481,11 +482,25 @@ function selectTemplate(t, card) {
 
 function setFont(font, btn) {
   selectedFont = font;
+  selectedFontStack = font === 'DM Sans' ? "'DM Sans',sans-serif" : "'" + font + "',serif";
   document.querySelectorAll('.font-btn').forEach(b => {
     b.style.borderColor = 'var(--border)';
   });
   btn.style.borderColor = 'var(--gold)';
-  updateCV();
+  // Dynamically load font if needed
+  const fontUrls = {
+    'Playfair Display': 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap',
+    'DM Serif Display': 'https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap',
+    'DM Sans': 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap'
+  };
+  if (fontUrls[font] && !document.querySelector('link[data-font="' + font + '"]')) {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = fontUrls[font];
+    link.setAttribute('data-font', font);
+    document.head.appendChild(link);
+  }
+  setTimeout(updateCV, 100);
 }
 
 function switchTab(tab, btn) {
@@ -532,9 +547,9 @@ function updateCV() {
   const c = getColors();
   const isDark = selectedTemplate === 'modern';
 
-  let html = '<div style="background:' + c.bg + ';padding:32px 28px;font-family:\'' + selectedFont + '\',serif;color:' + c.text + '">';
+  let html = '<div style="background:' + c.bg + ';padding:32px 28px;font-family:' + (selectedFontStack||"'DM Serif Display',serif") + ';color:' + c.text + '">';
   html += '<div style="border-bottom:' + c.border + ';padding-bottom:16px;margin-bottom:20px">';
-  html += '<div style="font-family:\'' + selectedFont + '\',serif;font-size:1.8rem;color:' + c.text + ';letter-spacing:-0.02em">' + fn + ' ' + ln + '</div>';
+  html += '<div style="font-family:' + (selectedFontStack||"'DM Serif Display',serif") + ';font-size:1.8rem;color:' + c.text + ';letter-spacing:-0.02em">' + fn + ' ' + ln + '</div>';
   html += '<div style="font-size:0.85rem;color:' + c.muted + ';margin-top:4px">' + title + '</div>';
   const contacts = [email,phone,loc,li].filter(Boolean);
   if (contacts.length) html += '<div style="display:flex;gap:14px;margin-top:8px;flex-wrap:wrap">' + contacts.map(x => '<span style="font-size:0.75rem;color:' + c.muted + '">' + x + '</span>').join('') + '</div>';
