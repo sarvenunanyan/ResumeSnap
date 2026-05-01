@@ -606,7 +606,7 @@ function downloadCV() {
   const c = getColors();
   const isDark = selectedTemplate === 'modern';
   const textColor = isDark ? '#eee' : '#111';
-  const html = '<!DOCTYPE html><html><head><title>' + fn + ' ' + ln + ' — CV</title><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"><style>body{margin:0;padding:0;background:' + c.bg + ';}a{color:' + textColor + ' !important;text-decoration:none !important;}@media print{@page{margin:0}body{background:' + c.bg + ' !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}}</style></head><body onload="window.print()">' + cvContent + '</body></html>';
+  const html = '<!DOCTYPE html><html><head><title>' + fn + ' ' + ln + ' — CV</title><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"><style>html,body{margin:0;padding:0;background:' + c.bg + ' !important;min-height:100vh;}a{color:' + textColor + ' !important;text-decoration:none !important;}@media print{html,body{background:' + c.bg + ' !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}@page{margin:0;background:' + c.bg + ';}}</style></head><body onload="window.print()">' + cvContent + '</body></html>';
   printWin.document.write(html);
   printWin.document.close();
 }
