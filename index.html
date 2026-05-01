@@ -14,7 +14,7 @@
 <title>ResumeSnap — Free AI CV & Resume Builder</title>
 <meta name="description" content="Build a professional CV in minutes. Free templates, AI bullet point generator, ATS score checker and instant PDF download. No signup required.">
 <meta name="keywords" content="resume builder, CV builder, ATS resume, AI resume, free CV maker 2025">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Georgia&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg:#0c0c0e; --surface:#141416; --card:#1a1a1e; --card2:#202025;
@@ -304,6 +304,18 @@ footer a:hover{color:var(--gold);}
   </div>
 </div>
 
+<div class="builder-section" id="font-section" style="padding-bottom:0;margin-bottom:0;">
+  <div style="max-width:1280px;margin:0 auto;padding:0 48px 40px;">
+    <div class="section-eyebrow" style="margin-bottom:8px;">Font Style</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px;">
+      <button class="font-btn active" id="font-dm" onclick="setFont('DM Serif Display',this)" style="background:var(--card);border:1px solid var(--gold);color:var(--text);padding:14px;border-radius:10px;cursor:pointer;font-family:'DM Serif Display',serif;font-size:1rem;transition:all 0.2s;">Classic<br><span style="font-size:0.7rem;font-family:'DM Sans',sans-serif;color:var(--text-muted);">DM Serif</span></button>
+      <button class="font-btn" id="font-sans" onclick="setFont('DM Sans',this)" style="background:var(--card);border:1px solid var(--border);color:var(--text);padding:14px;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:1rem;transition:all 0.2s;">Modern<br><span style="font-size:0.7rem;color:var(--text-muted);">DM Sans</span></button>
+      <button class="font-btn" id="font-playfair" onclick="setFont('Playfair Display',this)" style="background:var(--card);border:1px solid var(--border);color:var(--text);padding:14px;border-radius:10px;cursor:pointer;font-family:'Playfair Display',serif;font-size:1rem;transition:all 0.2s;">Elegant<br><span style="font-size:0.7rem;font-family:'DM Sans',sans-serif;color:var(--text-muted);">Playfair</span></button>
+      <button class="font-btn" id="font-georgia" onclick="setFont('Georgia',this)" style="background:var(--card);border:1px solid var(--border);color:var(--text);padding:14px;border-radius:10px;cursor:pointer;font-family:Georgia,serif;font-size:1rem;transition:all 0.2s;">Corporate<br><span style="font-size:0.7rem;font-family:'DM Sans',sans-serif;color:var(--text-muted);">Georgia</span></button>
+    </div>
+  </div>
+</div>
+
 <div class="builder-section" id="builder">
   <div class="section-eyebrow">Live CV Builder</div>
   <div class="section-title">Fill In. Preview. Download.</div>
@@ -458,11 +470,21 @@ footer a:hover{color:var(--gold);}
 
 <script>
 let selectedTemplate = 'classic';
+let selectedFont = 'DM Serif Display';
 
 function selectTemplate(t, card) {
   selectedTemplate = t;
   document.querySelectorAll('.template-card').forEach(c => c.classList.remove('selected'));
   card.classList.add('selected');
+  updateCV();
+}
+
+function setFont(font, btn) {
+  selectedFont = font;
+  document.querySelectorAll('.font-btn').forEach(b => {
+    b.style.borderColor = 'var(--border)';
+  });
+  btn.style.borderColor = 'var(--gold)';
   updateCV();
 }
 
@@ -512,7 +534,7 @@ function updateCV() {
 
   let html = '<div style="background:' + c.bg + ';padding:32px 28px;font-family:\'DM Sans\',sans-serif;color:' + c.text + '">';
   html += '<div style="border-bottom:' + c.border + ';padding-bottom:16px;margin-bottom:20px">';
-  html += '<div style="font-family:\'DM Serif Display\',serif;font-size:1.8rem;color:' + c.text + ';letter-spacing:-0.02em">' + fn + ' ' + ln + '</div>';
+  html += '<div style="font-family:\'' + selectedFont + '\',serif;font-size:1.8rem;color:' + c.text + ';letter-spacing:-0.02em">' + fn + ' ' + ln + '</div>';
   html += '<div style="font-size:0.85rem;color:' + c.muted + ';margin-top:4px">' + title + '</div>';
   const contacts = [email,phone,loc,li].filter(Boolean);
   if (contacts.length) html += '<div style="display:flex;gap:14px;margin-top:8px;flex-wrap:wrap">' + contacts.map(x => '<span style="font-size:0.75rem;color:' + c.muted + '">' + x + '</span>').join('') + '</div>';
@@ -606,7 +628,7 @@ function downloadCV() {
   const c = getColors();
   const isDark = selectedTemplate === 'modern';
   const textColor = isDark ? '#eee' : '#111';
-  const html = '<!DOCTYPE html><html><head><title>' + fn + ' ' + ln + ' — CV</title><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"><style>html,body{margin:0;padding:0;background:' + c.bg + ' !important;min-height:100vh;}*{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}a{color:' + textColor + ' !important;text-decoration:none !important;}div{background:' + c.bg + ';}@media print{html,body{background:' + c.bg + ' !important;}@page{margin:0;size:A4;}}</style></head><body onload="window.print()" style="background:' + c.bg + ';min-height:297mm;">' + cvContent + '</body></html>';
+  const html = '<!DOCTYPE html><html><head><title>' + fn + ' ' + ln + ' — CV</title><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet"><style>html,body{margin:0;padding:0;background:' + c.bg + ' !important;min-height:100vh;}*{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important;}a{color:' + textColor + ' !important;text-decoration:none !important;}div{background:' + c.bg + ';}@media print{html,body{background:' + c.bg + ' !important;}@page{margin:0;size:A4;}}</style></head><body onload="window.print()" style="background:' + c.bg + ';min-height:297mm;">' + cvContent + '</body></html>';
   printWin.document.write(html);
   printWin.document.close();
 }
