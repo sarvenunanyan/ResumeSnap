@@ -434,6 +434,21 @@ footer a:hover{color:var(--gold);}
       <div style="padding:0 24px 24px">
         <button class="download-btn" onclick="downloadCV()">⬇ Download as PDF — Free</button>
         <p style="font-size:0.72rem;color:var(--text-muted);margin-top:8px;text-align:center;">💡 Tip: In print dialog, turn off "Headers and footers" for a clean PDF</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;">
+          <button onclick="runCVScore()" id="cv-score-btn" style="background:var(--surface);border:1px solid var(--border);color:var(--text-muted);padding:11px;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.82rem;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:6px;" onmouseover="this.style.borderColor='var(--gold-dim)'" onmouseout="this.style.borderColor='var(--border)'">⭐ CV Quality Score</button>
+          <a href="https://coverlettersnap.net" target="_blank" style="background:var(--surface);border:1px solid var(--border);color:var(--text-muted);padding:11px;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:0.82rem;cursor:pointer;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;transition:all 0.2s;" onmouseover="this.style.borderColor='var(--gold-dim)';this.style.color='var(--text)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-muted)'">✉️ Write Cover Letter</a>
+        </div>
+        <!-- CV Score Result -->
+        <div id="cv-score-result" style="display:none;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:12px;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+            <div style="font-family:'DM Serif Display',serif;font-size:2rem;color:var(--gold);" id="cv-score-num">0</div>
+            <div>
+              <div style="font-size:0.82rem;font-weight:600;color:var(--text);" id="cv-score-label"></div>
+              <div style="font-size:0.72rem;color:var(--text-muted);">Overall CV Quality</div>
+            </div>
+          </div>
+          <div id="cv-score-tips" style="font-size:0.8rem;color:var(--text-muted);line-height:1.7;"></div>
+        </div>
       </div>
     </div>
     <div>
@@ -444,6 +459,52 @@ footer a:hover{color:var(--gold);}
             <div style="font-size:2rem;margin-bottom:12px">📝</div>
             <div style="font-size:0.9rem">Start filling in your details<br>to see your CV come to life</div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Job Description Analyser -->
+<div style="position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:0 48px 60px;">
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:20px;padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
+    <div>
+      <div class="section-eyebrow" style="margin-bottom:16px;">AI-Powered</div>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:1.8rem;letter-spacing:-0.02em;margin-bottom:12px;line-height:1.2;">Match Your CV to <em style="color:var(--gold);font-style:italic;">Any Job</em></h2>
+      <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.7;margin-bottom:20px;">Paste a job description and AI will analyse how well your CV matches — with specific suggestions to improve your match score and stand out.</p>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:24px;">
+        <div class="ats-feature">Keyword match analysis</div>
+        <div class="ats-feature">Missing skills identification</div>
+        <div class="ats-feature">Specific CV improvement tips</div>
+        <div class="ats-feature">Match score out of 100</div>
+      </div>
+      <textarea id="jd-input" class="form-input" rows="5" placeholder="Paste the job description here — from LinkedIn, Indeed, or any job site..."></textarea>
+      <button onclick="runJobMatch()" id="jd-btn" class="ats-btn" style="margin-top:14px;">🎯 Analyse Job Match</button>
+      <p style="font-size:0.75rem;color:var(--text-muted);margin-top:10px;">Fill in your CV in the builder above first</p>
+    </div>
+    <div class="ats-panel" id="jd-panel">
+      <div class="ats-placeholder" id="jd-placeholder">
+        <div class="ats-ph-icon">🎯</div>
+        <div class="ats-ph-text">Your job match analysis<br>will appear here.</div>
+      </div>
+      <div id="jd-result" style="display:none;">
+        <div class="score-top">
+          <div class="score-circle">
+            <svg width="96" height="96" viewBox="0 0 96 96">
+              <circle cx="48" cy="48" r="40" fill="none" stroke="var(--border)" stroke-width="7"/>
+              <circle id="jd-score-arc" cx="48" cy="48" r="40" fill="none" stroke="#f5c842" stroke-width="7" stroke-linecap="round" stroke-dasharray="251" stroke-dashoffset="251"/>
+            </svg>
+            <div class="score-num-wrap"><div class="score-big" id="jd-score-number">0</div><div class="score-sub">/100</div></div>
+          </div>
+          <div class="score-label" id="jd-score-label"></div>
+        </div>
+        <div style="margin-bottom:12px;">
+          <div class="score-fb-title">Missing Keywords</div>
+          <div id="jd-keywords" style="font-size:0.82rem;color:var(--text-muted);line-height:1.7;"></div>
+        </div>
+        <div>
+          <div class="score-fb-title">Recommendations</div>
+          <div id="jd-feedback"></div>
         </div>
       </div>
     </div>
@@ -979,6 +1040,143 @@ function copyBullet(el, text) {
     span.textContent = '✓ Copied!';
     setTimeout(function() { el.classList.remove('copied'); span.textContent = orig; }, 1800);
   });
+}
+
+function runCVScore() {
+  var fn = (document.getElementById('fn').value||'').trim();
+  var titleV = (document.getElementById('title').value||'').trim();
+  var summary = (document.getElementById('summary').value||'').trim();
+  var skills = (document.getElementById('skills').value||'').trim();
+  var expParts = [];
+  document.querySelectorAll('.exp-item').forEach(function(e) {
+    var jt = e.querySelector('.exp-jobtitle') ? e.querySelector('.exp-jobtitle').value : '';
+    var co = e.querySelector('.exp-company') ? e.querySelector('.exp-company').value : '';
+    var de = e.querySelector('.exp-desc') ? e.querySelector('.exp-desc').value : '';
+    if (jt) expParts.push(jt + ' at ' + co + ': ' + de);
+  });
+
+  if (!fn && !titleV) {
+    alert('Please fill in your CV details first.');
+    return;
+  }
+
+  var btn = document.getElementById('cv-score-btn');
+  btn.disabled = true; btn.textContent = 'Scoring...';
+
+  var systemPrompt = 'You are a professional CV reviewer. Score the CV and return ONLY valid JSON with no markdown: {"score":78,"label":"Strong CV","tips":"Add a professional summary to strengthen your profile. Quantify achievements with numbers and percentages. Consider adding certifications relevant to your field."} Score 0-100. Label options: Needs Work (0-49), Good CV (50-74), Strong CV (75-89), Excellent CV (90-100). Tips should be 2-3 specific actionable sentences.';
+
+  fetch('/api/generate', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      system: systemPrompt,
+      messages: [{role: 'user', content: 'Score this CV: Name:' + fn + ' Title:' + titleV + ' Summary:' + summary + ' Skills:' + skills + ' Experience:' + expParts.join(' | ')}]
+    })
+  })
+  .then(function(r) { return r.text().then(function(t) { return {ok: r.ok, text: t}; }); })
+  .then(function(res) {
+    var d;
+    try { d = JSON.parse(res.text); } catch(e) { throw new Error('Server error'); }
+    if (!res.ok || d.error) throw new Error(typeof d.error === 'string' ? d.error : 'Error');
+    var rawText = d.content[0].text.trim().split('```json').join('').split('```').join('').trim();
+    var data = JSON.parse(rawText);
+    var score = Math.min(100, Math.max(0, data.score||0));
+    var color = score>=75?'var(--green)':score>=50?'var(--gold)':'var(--red)';
+    document.getElementById('cv-score-result').style.display = 'block';
+    document.getElementById('cv-score-num').textContent = score;
+    document.getElementById('cv-score-num').style.color = color;
+    document.getElementById('cv-score-label').textContent = data.label || '';
+    document.getElementById('cv-score-tips').textContent = data.tips || '';
+    btn.disabled = false; btn.textContent = 'Refresh Score';
+  })
+  .catch(function(err) {
+    btn.disabled = false; btn.textContent = 'CV Quality Score';
+    alert('Could not score CV: ' + (err.message||'please try again.'));
+  });
+}
+
+function runJobMatch() {
+  var jd = document.getElementById('jd-input').value.trim();
+  if (!jd || jd.length < 50) {
+    document.getElementById('jd-placeholder').innerHTML = '<div class="ats-ph-icon">⚠️</div><div class="ats-ph-text">Please paste a job description first.</div>';
+    return;
+  }
+  var fn = (document.getElementById('fn').value||'').trim();
+  var titleV = (document.getElementById('title').value||'').trim();
+  var skills = (document.getElementById('skills').value||'').trim();
+  var expParts = [];
+  document.querySelectorAll('.exp-item').forEach(function(e) {
+    var jt = e.querySelector('.exp-jobtitle') ? e.querySelector('.exp-jobtitle').value : '';
+    var co = e.querySelector('.exp-company') ? e.querySelector('.exp-company').value : '';
+    var de = e.querySelector('.exp-desc') ? e.querySelector('.exp-desc').value : '';
+    if (jt) expParts.push(jt + ' at ' + co + ': ' + de);
+  });
+
+  if (!fn && !titleV && expParts.length === 0) {
+    document.getElementById('jd-placeholder').innerHTML = '<div class="ats-ph-icon">⚠️</div><div class="ats-ph-text">Please fill in your CV details first.</div>';
+    return;
+  }
+
+  var btn = document.getElementById('jd-btn');
+  btn.disabled = true; btn.textContent = 'Analysing...';
+  document.getElementById('jd-placeholder').style.display = 'flex';
+  document.getElementById('jd-result').style.display = 'none';
+  document.getElementById('jd-placeholder').innerHTML = '<div style="width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 12px;"></div><div class="ats-ph-text">Analysing job match...</div>';
+
+  var systemPrompt = 'You are a CV-job matching expert. Compare the CV with the job description and return ONLY valid JSON with no markdown: {"score":75,"label":"Good Match","missingKeywords":"Python, Agile, Stakeholder management","improvements":[{"type":"warn","text":"Add Python experience to skills section"},{"type":"bad","text":"No mention of Agile methodology"},{"type":"good","text":"Strong leadership experience matches requirements"},{"type":"warn","text":"Quantify achievements with metrics"}]} Score 0-100. Types: good/warn/bad. Give exactly 4 improvements.';
+
+  fetch('/api/generate', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+      system: systemPrompt,
+      messages: [{role: 'user', content: 'CV: Name:' + fn + ' Title:' + titleV + ' Skills:' + skills + ' Experience:' + expParts.join(' | ') + '
+
+Job Description: ' + jd}]
+    })
+  })
+  .then(function(r) { return r.text().then(function(t) { return {ok: r.ok, text: t}; }); })
+  .then(function(res) {
+    var d;
+    try { d = JSON.parse(res.text); } catch(e) { throw new Error('Server error'); }
+    if (!res.ok || d.error) throw new Error(typeof d.error === 'string' ? d.error : 'Error');
+    var rawText = d.content[0].text.trim().split('```json').join('').split('```').join('').trim();
+    var data = JSON.parse(rawText);
+    renderJobMatch(data);
+    btn.disabled = false; btn.textContent = 'Analyse Job Match';
+  })
+  .catch(function(err) {
+    document.getElementById('jd-placeholder').innerHTML = '<div class="ats-ph-icon">⚠️</div><div class="ats-ph-text">Analysis failed: ' + (err.message||'please try again.') + '</div>';
+    btn.disabled = false; btn.textContent = 'Analyse Job Match';
+  });
+}
+
+function renderJobMatch(data) {
+  document.getElementById('jd-placeholder').style.display = 'none';
+  document.getElementById('jd-result').style.display = 'block';
+  var score = Math.min(100, Math.max(0, data.score||0));
+  var color = score>=75?'#4ade80':score>=50?'#f5c842':'#f87171';
+  setTimeout(function() {
+    var arc = document.getElementById('jd-score-arc');
+    arc.style.strokeDashoffset = 251 - (score/100)*251;
+    arc.style.stroke = color;
+  }, 80);
+  var cur = 0;
+  var t = setInterval(function() {
+    cur = Math.min(cur+2, score);
+    document.getElementById('jd-score-number').textContent = cur;
+    document.getElementById('jd-score-number').style.color = color;
+    if (cur >= score) clearInterval(t);
+  }, 18);
+  document.getElementById('jd-score-label').textContent = data.label || '';
+  document.getElementById('jd-keywords').textContent = data.missingKeywords || 'None identified';
+  var fbHtml = '';
+  var improvements = data.improvements || [];
+  for (var i=0; i<improvements.length; i++) {
+    var icon = improvements[i].type==='good'?'✓':improvements[i].type==='warn'?'⚡':'✗';
+    fbHtml += '<div class="feedback-item ' + improvements[i].type + '">' + icon + ' ' + improvements[i].text + '</div>';
+  }
+  document.getElementById('jd-feedback').innerHTML = fbHtml;
 }
 
 function runATSScore() {
