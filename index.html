@@ -743,9 +743,7 @@ function importLinkedIn() {
       btn.disabled = false; btn.textContent = 'Import from LinkedIn';
       return;
     }
-    var raw = d.content[0].text.trim().replace(/```json
-?/g,'').replace(/```
-?/g,'').trim();
+    var raw = d.content[0].text.trim().replace(/```json[\r\n]?/g,'').replace(/```[\r\n]?/g,'').trim();
     var data;
     try { data = JSON.parse(raw); } catch(e) {
       status.textContent = 'Could not parse profile, please try again.';
