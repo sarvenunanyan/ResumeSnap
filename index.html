@@ -164,7 +164,7 @@ footer a{color:var(--text-muted);text-decoration:none;font-size:0.75rem;}
 footer a:hover{color:var(--gold);}
 .hero-left{animation:fadeUp 0.6s ease forwards;}
 .preview-wrapper{animation:fadeUp 0.6s ease 0.15s both;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 @media(max-width:1024px){
   .hero{grid-template-columns:1fr;gap:40px;padding:48px 24px 32px;}
   .preview-wrapper{position:static;}
@@ -997,47 +997,49 @@ function generateBullets() {
 
   fetch('/api/generate', {
     method: 'POST',
-    headers: {'Content-Type':'application/json'},
+    headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
-      system: 'You are an expert CV writer. Generate exactly 5 professional, ATS-optimised CV bullet points. Each must start with a strong action verb, include a quantifiable result where possible, and be concise (max 15 words). Output ONLY the 5 bullet points, each on its own line starting with a bullet character. No intro text, no explanations.',
-      messages: [{role:'user', content:'Generate 5 strong CV bullet points for: ' + jobTitle}]
+      system: 'You are an expert CV writer. Generate exactly 5 professional ATS-optimised CV bullet points. Each must start with a strong action verb and be concise max 15 words. Output ONLY the 5 bullet points each on its own line. No intro text.',
+      messages: [{role: 'user', content: 'Generate 5 CV bullet points for: ' + jobTitle}]
     })
   })
-  .then(function(r) { return r.text().then(function(t) { return {ok:r.ok,text:t}; }); })
+  .then(function(r) { return r.text().then(function(t) { return {ok: r.ok, text: t}; }); })
   .then(function(res) {
     var d;
     try { d = JSON.parse(res.text); } catch(e) {
       resultsEl.innerHTML = '<div style="color:var(--red);font-size:0.82rem;padding:6px 0">Server error, please try again.</div>';
-      btn.disabled = false; btn.textContent = 'Generate →';
+      btn.disabled = false; btn.textContent = 'Generate ->';
       return;
     }
     if (!res.ok || d.error) {
-      resultsEl.innerHTML = '<div style="color:var(--red);font-size:0.82rem;padding:6px 0">' + (typeof d.error === 'string' ? d.error : 'Error, please try again.') + '</div>';
-      btn.disabled = false; btn.textContent = 'Generate →';
+      resultsEl.innerHTML = '<div style="color:var(--red);font-size:0.82rem;padding:6px 0">' + (typeof d.error === 'string' ? d.error : 'Error') + '</div>';
+      btn.disabled = false; btn.textContent = 'Generate ->';
       return;
     }
     var lines = d.content[0].text.split('\n').filter(function(l) { return l.trim(); });
     var html = '';
-    for (var i=0;i<Math.min(lines.length,5);i++) {
-      var text = lines[i].replace(/^[•\-\*\d\.]\s*/, '').trim();
-      html += '<div class="ai-bullet-item" onclick="copyBullet(this,\'' + text.replace(/\\/g,'\\\\').replace(/'/g,"\\'") + '\')"><span class="ai-bullet-arrow">↓</span><span>' + text + '</span></div>';
+    for (var i = 0; i < Math.min(lines.length, 5); i++) {
+      var text = lines[i].replace(/^[^a-zA-Z]+/, '').trim();
+      var safe = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      html += '<div class="ai-bullet-item" onclick="copyBullet(this)" data-text="' + safe + '"><span class="ai-bullet-arrow">&#8595;</span><span>' + safe + '</span></div>';
     }
     resultsEl.innerHTML = html;
     document.getElementById('bullet-tip').style.display = 'block';
-    btn.disabled = false; btn.textContent = 'Generate →';
+    btn.disabled = false; btn.textContent = 'Generate ->';
   })
-  .catch(function(err) {
+  .catch(function() {
     resultsEl.innerHTML = '<div style="color:var(--red);font-size:0.82rem;padding:6px 0">Connection error.</div>';
-    btn.disabled = false; btn.textContent = 'Generate →';
+    btn.disabled = false; btn.textContent = 'Generate ->';
   });
 }
 
-function copyBullet(el, text) {
+function copyBullet(el) {
+  var text = el.getAttribute('data-text') || el.querySelector('span:last-child').textContent;
   navigator.clipboard.writeText('• ' + text).then(function() {
     var span = el.querySelector('span:last-child');
     var orig = span.textContent;
     el.classList.add('copied');
-    span.textContent = '✓ Copied!';
+    span.textContent = 'Copied!';
     setTimeout(function() { el.classList.remove('copied'); span.textContent = orig; }, 1800);
   });
 }
