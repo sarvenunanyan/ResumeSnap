@@ -315,20 +315,51 @@ footer a:hover{color:var(--gold);}
   <div class="section-title">Fill In. Preview. Download.</div>
   <p class="section-sub" style="margin-bottom:20px">Your CV updates in real time as you type.</p>
 
-  <div style="background:rgba(245,200,66,0.04);border:1px solid var(--gold-dim);border-radius:14px;padding:20px 24px;margin-bottom:28px;">
-    <div style="display:flex;align-items:center;justify-content:space-between;">
-      <div>
-        <div style="font-size:0.75rem;font-weight:600;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;">✦ Import Existing CV</div>
-        <div style="font-size:0.8rem;color:var(--text-muted);">Paste your current CV text — AI will fill the form automatically.</div>
-      </div>
-      <button id="import-toggle-btn" onclick="toggleImport()" style="background:var(--gold);color:var(--bg);border:none;padding:8px 18px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;white-space:nowrap;margin-left:16px;">Paste CV →</button>
+  <!-- Import Section -->
+  <div style="background:rgba(245,200,66,0.04);border:1px solid var(--gold-dim);border-radius:14px;padding:24px;margin-bottom:28px;">
+    <div style="font-size:0.75rem;font-weight:600;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;">✦ Import Your CV</div>
+    
+    <!-- Import Tabs -->
+    <div style="display:flex;gap:8px;margin-bottom:20px;">
+      <button id="import-tab-cv" onclick="switchImportTab('cv')" style="background:var(--gold);color:var(--bg);border:none;padding:8px 18px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;">📄 Paste CV Text</button>
+      <button id="import-tab-li" onclick="switchImportTab('linkedin')" style="background:transparent;color:var(--text-muted);border:1px solid var(--border);padding:8px 18px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.82rem;cursor:pointer;">💼 From LinkedIn</button>
     </div>
-    <div id="import-area" style="display:none;margin-top:16px;">
+
+    <!-- CV Text Panel -->
+    <div id="import-panel-cv">
+      <div style="font-size:0.82rem;color:var(--text-muted);margin-bottom:10px;">Paste your existing CV text — AI will fill the form automatically.</div>
       <textarea id="import-text" class="form-input" rows="6" placeholder="Paste your CV text here..."></textarea>
       <div style="display:flex;gap:10px;margin-top:10px;align-items:center;flex-wrap:wrap;">
         <button id="import-btn" onclick="importCV()" style="background:var(--gold);color:var(--bg);border:none;padding:10px 22px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:600;cursor:pointer;">✦ Auto-fill Form</button>
-        <button onclick="toggleImport()" style="background:transparent;color:var(--text-muted);border:1px solid var(--border);padding:10px 16px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.82rem;cursor:pointer;">Cancel</button>
         <span id="import-status" style="font-size:0.78rem;color:var(--text-muted);"></span>
+      </div>
+    </div>
+
+    <!-- LinkedIn Panel -->
+    <div id="import-panel-linkedin" style="display:none;">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:16px;">
+        <div style="font-size:0.85rem;font-weight:600;color:var(--text);margin-bottom:12px;">How to export your LinkedIn profile as PDF:</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <span style="background:var(--gold);color:var(--bg);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;flex-shrink:0;">1</span>
+            <span style="font-size:0.84rem;color:var(--text-muted);">Go to your <strong style="color:var(--text);">LinkedIn profile</strong> page</span>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <span style="background:var(--gold);color:var(--bg);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;flex-shrink:0;">2</span>
+            <span style="font-size:0.84rem;color:var(--text-muted);">Click <strong style="color:var(--text);">"More"</strong> button → <strong style="color:var(--text);">"Save to PDF"</strong></span>
+          </div>
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <span style="background:var(--gold);color:var(--bg);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;flex-shrink:0;">3</span>
+            <span style="font-size:0.84rem;color:var(--text-muted);">Open the downloaded PDF, <strong style="color:var(--text);">select all text</strong> (Ctrl+A), copy and paste below</span>
+          </div>
+        </div>
+        <a href="https://www.linkedin.com/in/me/" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:14px;background:rgba(245,200,66,0.1);border:1px solid var(--gold-dim);color:var(--gold);padding:8px 16px;border-radius:8px;text-decoration:none;font-size:0.8rem;font-weight:600;">💼 Open LinkedIn Profile →</a>
+      </div>
+      <div style="font-size:0.82rem;color:var(--text-muted);margin-bottom:10px;">Paste your LinkedIn PDF text below:</div>
+      <textarea id="import-text-li" class="form-input" rows="6" placeholder="Paste your LinkedIn profile text here..."></textarea>
+      <div style="display:flex;gap:10px;margin-top:10px;align-items:center;flex-wrap:wrap;">
+        <button id="import-btn-li" onclick="importLinkedIn()" style="background:var(--gold);color:var(--bg);border:none;padding:10px 22px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:600;cursor:pointer;">💼 Import from LinkedIn</button>
+        <span id="import-status-li" style="font-size:0.78rem;color:var(--text-muted);"></span>
       </div>
     </div>
   </div>
@@ -667,6 +698,119 @@ function downloadCV() {
     + '</head><body onload="window.print()" style="background:' + c.bg + ';min-height:297mm;">' + cvContent + '</body></html>';
   printWin.document.write(html);
   printWin.document.close();
+}
+
+function switchImportTab(tab) {
+  document.getElementById('import-panel-cv').style.display = tab === 'cv' ? 'block' : 'none';
+  document.getElementById('import-panel-linkedin').style.display = tab === 'linkedin' ? 'block' : 'none';
+  document.getElementById('import-tab-cv').style.background = tab === 'cv' ? 'var(--gold)' : 'transparent';
+  document.getElementById('import-tab-cv').style.color = tab === 'cv' ? 'var(--bg)' : 'var(--text-muted)';
+  document.getElementById('import-tab-cv').style.border = tab === 'cv' ? 'none' : '1px solid var(--border)';
+  document.getElementById('import-tab-li').style.background = tab === 'linkedin' ? 'var(--gold)' : 'transparent';
+  document.getElementById('import-tab-li').style.color = tab === 'linkedin' ? 'var(--bg)' : 'var(--text-muted)';
+  document.getElementById('import-tab-li').style.border = tab === 'linkedin' ? 'none' : '1px solid var(--border)';
+}
+
+function importLinkedIn() {
+  var text = document.getElementById('import-text-li').value.trim();
+  var status = document.getElementById('import-status-li');
+  if (!text) { status.textContent = 'Please paste your LinkedIn text first.'; return; }
+  var btn = document.getElementById('import-btn-li');
+  btn.disabled = true;
+  btn.textContent = 'Reading LinkedIn profile...';
+  status.textContent = '';
+
+  fetch('/api/generate', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+      system: 'You are a LinkedIn profile parser. Extract information from the LinkedIn PDF export text and return ONLY valid JSON with no extra text or markdown. Use this exact structure: {"firstName":"","lastName":"","jobTitle":"","email":"","phone":"","location":"","linkedin":"","summary":"","experience":[{"jobTitle":"","company":"","start":"","end":"","description":""}],"education":[{"degree":"","school":"","start":"","end":""}],"skills":"","languages":"","certifications":""} Extract all work experience and education entries. For skills join with commas. LinkedIn PDFs often include the profile URL - extract it for the linkedin field. If a field is not found use empty string.',
+      messages: [{role:'user', content: 'Parse this LinkedIn profile export:
+
+' + text}]
+    })
+  })
+  .then(function(r) { return r.text().then(function(t) { return {ok:r.ok, text:t}; }); })
+  .then(function(res) {
+    var d;
+    try { d = JSON.parse(res.text); } catch(e) {
+      status.textContent = 'Server error, please try again.';
+      btn.disabled = false; btn.textContent = 'Import from LinkedIn';
+      return;
+    }
+    if (!res.ok || d.error) {
+      status.textContent = 'Error: ' + (typeof d.error === 'string' ? d.error : 'please try again.');
+      btn.disabled = false; btn.textContent = 'Import from LinkedIn';
+      return;
+    }
+    var raw = d.content[0].text.trim().replace(/```json
+?/g,'').replace(/```
+?/g,'').trim();
+    var data;
+    try { data = JSON.parse(raw); } catch(e) {
+      status.textContent = 'Could not parse profile, please try again.';
+      btn.disabled = false; btn.textContent = 'Import from LinkedIn';
+      return;
+    }
+
+    if (data.firstName) document.getElementById('fn').value = data.firstName;
+    if (data.lastName) document.getElementById('ln').value = data.lastName;
+    if (data.jobTitle) document.getElementById('title').value = data.jobTitle;
+    if (data.email) document.getElementById('email').value = data.email;
+    if (data.phone) document.getElementById('phone').value = data.phone;
+    if (data.location) document.getElementById('location').value = data.location;
+    if (data.linkedin) document.getElementById('linkedin').value = data.linkedin;
+    if (data.summary) document.getElementById('summary').value = data.summary;
+    if (data.skills) document.getElementById('skills').value = data.skills;
+    if (data.languages) document.getElementById('languages').value = data.languages;
+    if (data.certifications) document.getElementById('certs').value = data.certifications;
+
+    if (data.experience && data.experience.length > 0) {
+      document.getElementById('exp-list').innerHTML = '';
+      for (var i=0; i<data.experience.length; i++) {
+        if (i > 0) addExp();
+        var items = document.getElementById('exp-list').querySelectorAll('.exp-item');
+        var item = items[items.length-1];
+        if (!item) continue;
+        var exp = data.experience[i];
+        if (exp.jobTitle) item.querySelector('.exp-jobtitle').value = exp.jobTitle;
+        if (exp.company) item.querySelector('.exp-company').value = exp.company;
+        if (exp.start) item.querySelector('.exp-start').value = exp.start;
+        if (exp.end) item.querySelector('.exp-end').value = exp.end;
+        if (exp.description) item.querySelector('.exp-desc').value = exp.description;
+      }
+    }
+
+    if (data.education && data.education.length > 0) {
+      document.getElementById('edu-list').innerHTML = '';
+      for (var i=0; i<data.education.length; i++) {
+        if (i > 0) addEdu();
+        var items = document.getElementById('edu-list').querySelectorAll('.edu-item');
+        var item = items[items.length-1];
+        if (!item) continue;
+        var edu = data.education[i];
+        if (edu.degree) item.querySelector('.edu-degree').value = edu.degree;
+        if (edu.school) item.querySelector('.edu-school').value = edu.school;
+        if (edu.start) item.querySelector('.edu-start').value = edu.start;
+        if (edu.end) item.querySelector('.edu-end').value = edu.end;
+      }
+    }
+
+    updateCV();
+    status.style.color = 'var(--green)';
+    status.textContent = '✓ LinkedIn profile imported successfully!';
+    setTimeout(function() {
+      status.textContent = '';
+      status.style.color = '';
+    }, 3000);
+    btn.disabled = false;
+    btn.textContent = '💼 Import from LinkedIn';
+  })
+  .catch(function(err) {
+    status.textContent = 'Connection error: ' + (err.message || 'please try again.');
+    btn.disabled = false;
+    btn.textContent = '💼 Import from LinkedIn';
+  });
 }
 
 function toggleImport() {
