@@ -725,9 +725,7 @@ function importLinkedIn() {
     headers: {'Content-Type':'application/json'},
     body: JSON.stringify({
       system: 'You are a LinkedIn profile parser. Extract information from the LinkedIn PDF export text and return ONLY valid JSON with no extra text or markdown. Use this exact structure: {"firstName":"","lastName":"","jobTitle":"","email":"","phone":"","location":"","linkedin":"","summary":"","experience":[{"jobTitle":"","company":"","start":"","end":"","description":""}],"education":[{"degree":"","school":"","start":"","end":""}],"skills":"","languages":"","certifications":""} Extract all work experience and education entries. For skills join with commas. LinkedIn PDFs often include the profile URL - extract it for the linkedin field. If a field is not found use empty string.',
-      messages: [{role:'user', content: 'Parse this LinkedIn profile export:
-
-' + text}]
+      messages: [{role:'user', content: 'Parse this LinkedIn profile export:\n\n' + text}]
     })
   })
   .then(function(r) { return r.text().then(function(t) { return {ok:r.ok, text:t}; }); })
