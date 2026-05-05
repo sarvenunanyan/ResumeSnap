@@ -1132,9 +1132,7 @@ function runJobMatch() {
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
       system: systemPrompt,
-      messages: [{role: 'user', content: 'CV: Name:' + fn + ' Title:' + titleV + ' Skills:' + skills + ' Experience:' + expParts.join(' | ') + '
-
-Job Description: ' + jd}]
+      messages: [{role: 'user', content: 'CV: Name:' + fn + ' Title:' + titleV + ' Skills:' + skills + ' Experience:' + expParts.join(' | ') + ' Job:' + jd}]
     })
   })
   .then(function(r) { return r.text().then(function(t) { return {ok: r.ok, text: t}; }); })
